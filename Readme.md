@@ -5,7 +5,7 @@ June 2025
 Documentation for the ROSACE project.
 It is based on Sphinx tool.
 
-Documantation is visible here: [https://rosace-astronomy.github.io/rosace-docs/]{https://rosace-astronomy.github.io/rosace-docs/}
+Documantation is visible here: [https://rosace-astronomy.github.io/rosace-docs/](https://rosace-astronomy.github.io/rosace-docs/)
 
 To update the changes, just run:
 ```
