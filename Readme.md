@@ -2,6 +2,7 @@
 
 June 2025
 
+Documentation for the ROSACE project.
 This documentation is based on Sphinx tool.
 
 To update the changes, just run:
