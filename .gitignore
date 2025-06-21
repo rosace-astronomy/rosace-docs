@@ -194,4 +194,4 @@ cython_debug/
 .cursorindexingignore
 
 # F. Cochard 21 Jun 2025
-.code-worspace
+*.code-worspace
