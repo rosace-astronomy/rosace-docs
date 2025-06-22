@@ -6,20 +6,25 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'Robotic_Observatory'
+project = 'ROSACE'
 copyright = '2025, F. Cochard, T. Notargiacomo'
 author = 'F. Cochard, T. Notargiacomo'
+version = '0.0.1'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = [
     'sphinx_rtd_theme',
+    'sphinx_simplepdf',
 ]
 templates_path = ['_templates']
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'rosace-docs']
 
-
+simplepdf_vars = {
+    'primary': '#333333',
+    'links': '#FF3333',
+}
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
