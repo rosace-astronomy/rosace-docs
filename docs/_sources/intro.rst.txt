@@ -21,11 +21,28 @@ evolve (the instruments, the observing sequences, and so on).
 
 We think that continous improvement is the best way to move forward - one small step everyday. 
 
-The system is made of 5 independant modules:
+The system is made of five independant modules. Indepedant means that each one can be used independantly from the others. You can even use only some of them, and not all. Of course, the modules must
+exchange some data, and this is done through Rest API.
 
-* Module 1: The dome/shelter control
-* Module 2: Shelduler (what is the next target to observe)
-* Module 3: Sequencer (run the actual observation)
-* Module 4: Data reduction (to get a scientific result)
-* Module 5: Display and share the results
+* Module 1: :ref:`The dome/shelter control <Module1-label>`
+
+This module...
+
+* Module 2: :ref:`Shelduler (what is the next target to observe) <Module2-label>`
+
+This module...
+
+* Module 3: :ref:`Sequencer (run the actual observation) <Module3-label>`
+
+This module...
+
+* Module 4: :ref:`Data reduction (to get a scientific result) <Module4-label>`
+
+This module...
+
+* Module 5: :ref:`Display and share the results <Module5-label>`
+
+This module...
+
+
 

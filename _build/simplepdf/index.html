@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   ROSACE documentation
+  </title>
+  <link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+  <link href="_static/main.css?v=fbd3f620" rel="stylesheet" type="text/css"/>
+  <script src="_static/jquery.js?v=5d32c60e">
+  </script>
+  <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c">
+  </script>
+  <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js">
+  </script>
+  <script src="_static/doctools.js">
+  </script>
+  <script src="_static/sphinx_highlight.js">
+  </script>
+  <link href="genindex.html" rel="index" title="Index"/>
+  <link href="search.html" rel="search" title="Search"/>
+ </head>
+ <body>
+  <article class="dont-break" id="cover">
+   <div class="container">
+    <!-- Logo -->
+    <div class="logo">
+     <p>
+     </p>
+    </div>
+    <!-- Cover middle -->
+    <div class="cover-middle">
+     <div class="title">
+      <h1 class="title-cover">
+       ROSACE
+      </h1>
+      <p class="subtitle-cover">
+       Version 0.0.1
+      </p>
+      <span class="meta">
+      </span>
+     </div>
+     <!--
+      <div class="client-logo">
+        <img src="../data/logo_.png" alt="Logotipo">
+      </div>
+      -->
+    </div>
+    <!-- Footer -->
+    <div class="cover-footer">
+     <p>
+     </p>
+    </div>
+   </div>
+  </article>
+  <div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+   <div class="sphinxsidebarwrapper">
+    <div>
+     <h3>
+      <a href="#">
+       Table of Contents
+      </a>
+     </h3>
+     <p class="caption" role="heading">
+      <span class="caption-text">
+       Contents:
+      </span>
+     </p>
+     <ul>
+      <li class="toctree-l1">
+       <a class="reference internal" href="#introduction">
+        Introduction
+       </a>
+      </li>
+      <li class="toctree-l1">
+       <a class="reference internal" href="#get-started">
+        Get started
+       </a>
+      </li>
+      <li class="toctree-l1">
+       <a class="reference internal" href="#how-to-contribute">
+        How to Contribute
+       </a>
+      </li>
+      <li class="toctree-l1">
+       <a class="reference internal" href="#basic-principles">
+        Basic principles
+       </a>
+      </li>
+      <li class="toctree-l1">
+       <a class="reference internal" href="#module-1-dome-shelter-manager">
+        Module 1: Dome / Shelter manager
+       </a>
+      </li>
+      <li class="toctree-l1">
+       <a class="reference internal" href="#module-2-scheduler">
+        Module 2: Scheduler
+       </a>
+      </li>
+      <li class="toctree-l1">
+       <a class="reference internal" href="#module-3-sequencer">
+        Module 3: Sequencer
+       </a>
+      </li>
+      <li class="toctree-l1">
+       <a class="reference internal" href="#module-4-data-reduction">
+        Module 4: Data Reduction
+       </a>
+      </li>
+      <li class="toctree-l1">
+       <a class="reference internal" href="#module-5-display-share-and-archive">
+        Module 5: Display, share and archive
+       </a>
+      </li>
+      <li class="toctree-l1">
+       <a class="reference internal" href="#observing-file-format">
+        Observing file format
+       </a>
+      </li>
+     </ul>
+    </div>
+   </div>
+  </div>
+  <div class="document">
+   <div class="documentwrapper">
+    <div class="bodywrapper">
+     <div class="body" role="main">
+      <section id="welcome-to-the-rosace-project">
+       <span id="mainpage">
+       </span>
+       <h1>
+        Welcome to the ROSACE project
+        <a class="headerlink" href="#welcome-to-the-rosace-project" title="Permalink to this heading">
+         
+        </a>
+       </h1>
+       <p>
+        ROSACE is the acronym for
+        <strong>
+         Robotic Observations and Spectrocopic Astronomy, a Collaborative Experience
+        </strong>
+       </p>
+       <p>
+        This project aims to develop a network of amateur and professional observatories to run Robotic Spectroscopic astronomical observations.
+All together, we can offer a new tool to the Science to better understand our Universe.
+       </p>
+       <p>
+        This project is based on software Open Source tools only.
+       </p>
+       <p>
+        Robotic observation means that
+        <strong>
+         no human action
+        </strong>
+        is required. From opening the dome (or shelter) to processing the data and sharing the result,
+all is automated.
+       </p>
+       <p>
+        The project is developed by the community: any contribution from you is welcome.
+Our intention is to propose a system that can be adapted from smallest to biggest telescopes.
+       </p>
+       <div class="toctree-wrapper compound">
+        <span id="document-intro">
+        </span>
+        <section id="introduction">
+         <h2>
+          Introduction
+          <a class="headerlink" href="#introduction" title="Permalink to this heading">
+           
+          </a>
+         </h2>
+         <p>
+          This project proposes to setup your own robotic observatory for Astronomical Spectro observations.
+         </p>
+         <p>
+          A proposal : the name of the project is ROSACE, for
+          <strong>
+           Robotic Observations and Spectrocopic Astronomy, a Collaborative Experience
+          </strong>
+         </p>
+         <p>
+          Our intention is that many observers, with different instruments and for various scientific programs can use this system. The final goal is that we can produce
+all together valuable data for the science, and at the end for better understand the Universe we&rsquo;re living in.
+         </p>
+         <p>
+          We do think that Spectroscopic observations
+          <strong>
+           cannot be fully standard
+          </strong>
+          . The observation sequence will depend on your own setup, and the data reduction will
+vary from one scientific goal to the other. You will probably have to &lsquo;put your hands on&rsquo;, and write some code to adapt the system to your own need. We want
+to make these adaptations as simple as possible.
+         </p>
+         <p>
+          To make this system accessible for everyone, we&rsquo;ve organized with independant modules, with few general rules, and the code is intended to be easy
+to read and to maintain. Managing several small problems is better than a big one.
+         </p>
+         <p>
+          We work over the long term. People will change, instruments will change, new science opportunities will arise. The platform must be able to adapt
+to all these changes. To make this, we do our best to be clear on what is stable over the time (for instance the Observing File format), and what can
+evolve (the instruments, the observing sequences, and so on).
+         </p>
+         <p>
+          We think that continous improvement is the best way to move forward - one small step everyday.
+         </p>
+         <p>
+          The system is made of five independant modules. Indepedant means that each one can be used independantly from the others. You can even use only some of them, and not all. Of course, the modules must
+exchange some data, and this is done through Rest API.
+         </p>
+         <ul class="simple">
+          <li>
+           <p>
+            Module 1:
+            <a class="reference internal" href="index.html#module1-label">
+             <span class="std std-ref">
+              The dome/shelter control
+             </span>
+            </a>
+           </p>
+          </li>
+         </ul>
+         <p>
+          This module&hellip;
+         </p>
+         <ul class="simple">
+          <li>
+           <p>
+            Module 2:
+            <a class="reference internal" href="index.html#module2-label">
+             <span class="std std-ref">
+              Shelduler (what is the next target to observe)
+             </span>
+            </a>
+           </p>
+          </li>
+         </ul>
+         <p>
+          This module&hellip;
+         </p>
+         <ul class="simple">
+          <li>
+           <p>
+            Module 3:
+            <a class="reference internal" href="index.html#module3-label">
+             <span class="std std-ref">
+              Sequencer (run the actual observation)
+             </span>
+            </a>
+           </p>
+          </li>
+         </ul>
+         <p>
+          This module&hellip;
+         </p>
+         <ul class="simple">
+          <li>
+           <p>
+            Module 4:
+            <a class="reference internal" href="index.html#module4-label">
+             <span class="std std-ref">
+              Data reduction (to get a scientific result)
+             </span>
+            </a>
+           </p>
+          </li>
+         </ul>
+         <p>
+          This module&hellip;
+         </p>
+         <ul class="simple">
+          <li>
+           <p>
+            Module 5:
+            <a class="reference internal" href="index.html#module5-label">
+             <span class="std std-ref">
+              Display and share the results
+             </span>
+            </a>
+           </p>
+          </li>
+         </ul>
+         <p>
+          This module&hellip;
+         </p>
+        </section>
+        <span id="document-GetStarted">
+        </span>
+        <section id="get-started">
+         <h2>
+          Get started
+          <a class="headerlink" href="#get-started" title="Permalink to this heading">
+           
+          </a>
+         </h2>
+         <p>
+          When the project will have enough maturity, we&rsquo;ll explain how to start from scratch.
+         </p>
+        </section>
+        <span id="document-Contribute">
+        </span>
+        <section id="how-to-contribute">
+         <h2>
+          How to Contribute
+          <a class="headerlink" href="#how-to-contribute" title="Permalink to this heading">
+           
+          </a>
+         </h2>
+         <p>
+          The project is developed by the community, and we need you!
+         </p>
+         <p>
+          Here are the ways to help developing this tool:
+         </p>
+         <ul class="simple">
+          <li>
+           <p>
+            Install your own observatory and give us any user feedback
+           </p>
+          </li>
+          <li>
+           <p>
+            If you&rsquo;re a developper, contact us and tell you where you can help (there is so much to do!)
+           </p>
+          </li>
+          <li>
+           <p>
+            Write and/or translate the documentation (the plan is to get only an english version, but we never know)
+           </p>
+          </li>
+         </ul>
+        </section>
+        <span id="document-Principles">
+        </span>
+        <section id="basic-principles">
+         <h2>
+          Basic principles
+          <a class="headerlink" href="#basic-principles" title="Permalink to this heading">
+           
+          </a>
+         </h2>
+         <p>
+          The project is based on few principles:
+         </p>
+         <ul class="simple">
+          <li>
+           <p>
+            An observation is a consistent set of images and data, collected in an Observation File (yaml format)&hellip; or json? YAML pour les commentaires ?
+           </p>
+          </li>
+          <li>
+           <p>
+            All files of one observing night are saved in a single folder
+           </p>
+          </li>
+          <li>
+           <p>
+            All images and spectra are in FTIS format (which is THE format for astronomy files).
+           </p>
+          </li>
+          <li>
+           <p>
+            We use only Open Source tools:
+           </p>
+           <ul>
+            <li>
+             <p>
+              Linux.
+             </p>
+            </li>
+            <li>
+             <p>
+              Python (3.10 or above) as much as possible.
+             </p>
+            </li>
+            <li>
+             <p>
+              Git for revision control and sharing the code.
+             </p>
+            </li>
+            <li>
+             <p>
+              Rest API interfaces (to split front-end and back-end).
+             </p>
+            </li>
+            <li>
+             <p>
+              User interfaces in (JavaScript / TypeScript).
+             </p>
+            </li>
+            <li>
+             <p>
+              INDI server and devices (INDI is for Linux what ASCOM is for Windows).
+             </p>
+            </li>
+            <li>
+             <p>
+              Sphinx for the documentation.
+             </p>
+            </li>
+            <li>
+             <p>
+              Few standard Python libraries :
+             </p>
+             <ul>
+              <li>
+               <p>
+                Astropy, for all Astronomy related stuff.
+               </p>
+              </li>
+              <li>
+               <p>
+                FastAPI for the Rest API interfaces.
+               </p>
+              </li>
+              <li>
+               <p>
+                MQTT and TIG (Telegraf / InfluxDB / Grafana) to reacord real time data.
+               </p>
+              </li>
+              <li>
+               <p>
+                Logging for the loggers (all actions are recorded).
+               </p>
+              </li>
+              <li>
+               <p>
+                PyTransitions (for Finite States Machine).
+               </p>
+              </li>
+              <li>
+               <p>
+                Cmd.cmd (for getting a command line interface (CLI), useful for debugging).
+               </p>
+              </li>
+             </ul>
+            </li>
+           </ul>
+          </li>
+          <li>
+           <p>
+            The dome or shelter can open and close whatever is the telescope position.
+           </p>
+          </li>
+          <li>
+           <p>
+            Each module can be installed locally or remotely (client-server architecture).
+           </p>
+          </li>
+          <li>
+           <p>
+            We can use Kstars for monitoring the actions (very useful for debugging).
+           </p>
+          </li>
+          <li>
+           <p>
+            We love the concept of continuous improvement ; a small step every day.
+           </p>
+          </li>
+          <li>
+           <p>
+            There is a single configuration file (in yaml format) for each module.
+           </p>
+          </li>
+         </ul>
+        </section>
+        <span id="document-Modules/Module1">
+        </span>
+        <section id="module-1-dome-shelter-manager">
+         <span id="module1-label">
+         </span>
+         <h2>
+          Module 1: Dome / Shelter manager
+          <a class="headerlink" href="#module-1-dome-shelter-manager" title="Permalink to this heading">
+           
+          </a>
+         </h2>
+         <p>
+          The module is part of the
+          <a class="reference internal" href="index.html#mainpage">
+           <span class="std std-ref">
+            ROSACE project
+           </span>
+          </a>
+         </p>
+        </section>
+        <span id="document-Modules/Module2">
+        </span>
+        <section id="module-2-scheduler">
+         <span id="module2-label">
+         </span>
+         <h2>
+          Module 2: Scheduler
+          <a class="headerlink" href="#module-2-scheduler" title="Permalink to this heading">
+           
+          </a>
+         </h2>
+         <p>
+          The module is part of the
+          <a class="reference internal" href="index.html#mainpage">
+           <span class="std std-ref">
+            ROSACE project
+           </span>
+          </a>
+         </p>
+        </section>
+        <span id="document-Modules/Module3">
+        </span>
+        <section id="module-3-sequencer">
+         <span id="module3-label">
+         </span>
+         <h2>
+          Module 3: Sequencer
+          <a class="headerlink" href="#module-3-sequencer" title="Permalink to this heading">
+           
+          </a>
+         </h2>
+         <p>
+          The module is part of the
+          <a class="reference internal" href="index.html#mainpage">
+           <span class="std std-ref">
+            ROSACE project
+           </span>
+          </a>
+         </p>
+         <p>
+          This module is the core of the Robotic observation. It runs all the steps of an observation sequence.
+         </p>
+         <p>
+          Each observation runs a given observing sequence. You can write your own sequence, to match your scientific need. The sequence is made of &ldquo;bricks&rdquo; ;
+you can use existing bricks or write your owns.
+         </p>
+         <p>
+          Here are the main (and required) principles for this module:
+         </p>
+         <ol class="arabic simple">
+          <li>
+           <p>
+            Each observation uses a specific sequence (mainly linked to the scientific goal of the observation).
+           </p>
+          </li>
+          <li>
+           <p>
+            A sequence is a single list of basic steps. No loops, no conditions, the system is very rustic.
+           </p>
+          </li>
+          <li>
+           <p>
+            A single structure is used to give each step all the data it needs (target star, exposure duration, and so on).
+           </p>
+          </li>
+          <li>
+           <p>
+            This structure can be append by each step.
+           </p>
+          </li>
+          <li>
+           <p>
+            This structure is also used at the end of the process to write the &ldquo;Observing file&rdquo;, needed for the data reduction.
+           </p>
+          </li>
+          <li>
+           <p>
+            We use a common logger system ; each step can log any data it wants.
+           </p>
+          </li>
+          <li>
+           <p>
+            Each step ends by a standard &lsquo;return&rsquo;, that allow the sequence to continue, or to stop if a problem occured.
+           </p>
+          </li>
+         </ol>
+        </section>
+        <span id="document-Modules/Module4">
+        </span>
+        <section id="module-4-data-reduction">
+         <span id="module4-label">
+         </span>
+         <h2>
+          Module 4: Data Reduction
+          <a class="headerlink" href="#module-4-data-reduction" title="Permalink to this heading">
+           
+          </a>
+         </h2>
+         <p>
+          The module is part of the
+          <a class="reference internal" href="index.html#mainpage">
+           <span class="std std-ref">
+            ROSACE project
+           </span>
+          </a>
+         </p>
+        </section>
+        <span id="document-Modules/Module5">
+        </span>
+        <section id="module-5-display-share-and-archive">
+         <span id="module5-label">
+         </span>
+         <h2>
+          Module 5: Display, share and archive
+          <a class="headerlink" href="#module-5-display-share-and-archive" title="Permalink to this heading">
+           
+          </a>
+         </h2>
+         <p>
+          The module is part of the
+          <a class="reference internal" href="index.html#mainpage">
+           <span class="std std-ref">
+            ROSACE project
+           </span>
+          </a>
+         </p>
+        </section>
+        <span id="document-ObsFileFormat">
+        </span>
+        <section id="observing-file-format">
+         <h2>
+          Observing file format
+          <a class="headerlink" href="#observing-file-format" title="Permalink to this heading">
+           
+          </a>
+         </h2>
+         <p>
+          Each observation is fully defined by its Observing File. This file is in yaml format (human readable, easy to edit).
+         </p>
+         <p>
+          Here is the standard format for the Observing File:
+         </p>
+         <p>
+          &mdash;
+name: Vega
+RA: 18h36m56.33635s
+DEC: &ldquo;+38d47m01.28021975s&rdquo;
+nb: 3
+exptime: 5
+x1: 100
+y1: 250
+x2: 1500
+y2: 1400
+seq: BeUVEX
+         </p>
+        </section>
+       </div>
+      </section>
+      <section id="indices-and-tables">
+       <h1>
+        Indices and tables
+        <a class="headerlink" href="#indices-and-tables" title="Permalink to this heading">
+         
+        </a>
+       </h1>
+       <ul class="simple">
+        <li>
+         <p>
+          <a class="reference internal" href="genindex.html">
+           <span class="std std-ref">
+            Index
+           </span>
+          </a>
+         </p>
+        </li>
+        <li>
+         <p>
+          <a class="reference internal" href="py-modindex.html">
+           <span class="std std-ref">
+            Module Index
+           </span>
+          </a>
+         </p>
+        </li>
+        <li>
+         <p>
+          <a class="reference internal" href="search.html">
+           <span class="std std-ref">
+            Search Page
+           </span>
+          </a>
+         </p>
+        </li>
+       </ul>
+      </section>
+      <div class="clearer">
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="clearer">
+   </div>
+  </div>
+  <article id="back-cover">
+   <div class="container">
+    <div class="back-cover-footer">
+     <p>
+      &copy; Copyright 2025, F. Cochard, T. Notargiacomo.
+     </p>
+     <p>
+      Created using
+      <a href="http://sphinx-doc.org/">
+       Sphinx
+      </a>
+      7.1.2.
+     </p>
+    </div>
+   </div>
+  </article>
+ </body>
+</html>

@@ -3,28 +3,14 @@ The five modules
 
 The project is made of 5 independant modules:
 
-* Module 1: The dome/shelter control
-* Module 2: Shelduler (what is the next target to observe)
-* Module 3: Sequencer (run the actual observation)
-* Module 4: Data reduction (to get a scientific result)
-* Module 5: Display and share the results
+* Module 1: :ref:`The dome/shelter control <Module1-label>`
+
+Blabla
+
+* Module 2: :ref:`Shelduler (what is the next target to observe) <Module2-label>`
+* Module 3: :ref:`Sequencer (run the actual observation) <Module3-label>`
+* Module 4: :ref:`Data reduction (to get a scientific result) <Module4-label>`
+* Module 5: :ref:`Display and share the results <Module5-label>`
 
 Indepedant modules means that each one can be used independantly from the others. You can even use only some of them, and not all. Of course, the modules must
 exchange some data, and this is done through Rest API.
-
-Here are more details for each module:
-
-Module 1: The dome/shelter control
-----------------------------------
-
-Module 2: Shelduler (what is the next target to observe)
---------------------------------------------------------
-
-Module 3: Sequencer (run the actual observation)
-------------------------------------------------
-
-Module 4: Data reduction (to get a scientific result)
------------------------------------------------------
-
-Module 5: Display and share the results
----------------------------------------

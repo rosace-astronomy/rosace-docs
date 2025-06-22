@@ -1,7 +1,9 @@
+.. _Module3-label:
+
 Module 3: Sequencer
 ===================
 
-The module is part of the :ref:`Obervatory <MainPage>`
+The module is part of the :ref:`ROSACE project <MainPage>`
 
 This module is the core of the Robotic observation. It runs all the steps of an observation sequence.
 
