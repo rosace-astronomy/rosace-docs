@@ -196,3 +196,4 @@ cython_debug/
 # F. Cochard 21 Jun 2025
 *.code-worspace
 _build/
+rosace-docs/

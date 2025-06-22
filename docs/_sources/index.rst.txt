@@ -5,8 +5,8 @@
 
 .. _MainPage:
 
-Welcome to the Spectro Robotic Observatory for Astronomy
-========================================================
+Welcome to the ROSACE project
+=============================
 
 The goal of this project is to develop a network of amateur (and professional) observatories to run Robotic Spectroscopic astronomical observations.
 All together, we can offer a new tool to the Science to better understand our Universe.
@@ -18,21 +18,41 @@ Robotic observation means that **no human action** is required. From opening the
 The project is developed by the community: any contribution from you is welcome.
 Our intention is to propose a system that can be adapted from smallest to biggest telescopes.
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+.. if-builder:: simplepdf
 
-   ./intro.rst
-   ./GetStarted.rst
-   ./Contribute.rst
-   ./Principles.rst
-   ./FiveModules.rst
-   ./Modules/Module1.rst
-   ./Modules/Module2.rst
-   ./Modules/Module3.rst
-   ./Modules/Module4.rst
-   ./Modules/Module5.rst
-   ./ObsFileFormat.rst
+   .. toctree::
+      :maxdepth: 2
+      :caption: Contents:
+
+      ./intro.rst
+      ./GetStarted.rst
+      ./Contribute.rst
+      ./Principles.rst
+      ./FiveModules.rst
+      ./Modules/Module1.rst
+      ./Modules/Module2.rst
+      ./Modules/Module3.rst
+      ./Modules/Module4.rst
+      ./Modules/Module5.rst
+      ./ObsFileFormat.rst
+
+.. if-builder:: html
+
+   .. toctree::
+      :maxdepth: 2
+      :caption: Contents:
+
+      ./intro.rst
+      ./GetStarted.rst
+      ./Contribute.rst
+      ./Principles.rst
+      ./FiveModules.rst
+      ./Modules/Module1.rst
+      ./Modules/Module2.rst
+      ./Modules/Module3.rst
+      ./Modules/Module4.rst
+      ./Modules/Module5.rst
+      ./ObsFileFormat.rst
 
 Indices and tables
 ==================
