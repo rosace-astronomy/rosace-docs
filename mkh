@@ -1,0 +1,6 @@
+# This is a quick scrpit to update the doc in one step.
+
+make html
+
+echo 'Command : cp -r _build/html/* docs/'
+cp -r _build/html/* docs/

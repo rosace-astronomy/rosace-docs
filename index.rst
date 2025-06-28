@@ -21,41 +21,40 @@ all is automated.
 The project is developed by the community: any contribution from you is welcome.
 Our intention is to propose a system that can be adapted from smallest to biggest telescopes.
 
-.. if-builder:: simplepdf
+.. To activate if we must have different content for PDF
+   .. if-builder:: simplepdf
 
-   .. toctree::
-      :maxdepth: 2
-      :caption: Contents:
+      .. toctree::
+         :maxdepth: 2
+         :caption: Contents:
 
-      ./intro.rst
-      ./GetStarted.rst
-      ./Contribute.rst
-      ./Principles.rst
-      ./FiveModules.rst
-      ./Modules/Module1.rst
-      ./Modules/Module2.rst
-      ./Modules/Module3.rst
-      ./Modules/Module4.rst
-      ./Modules/Module5.rst
-      ./ObsFileFormat.rst
+         ./intro.rst
+         ./GetStarted.rst
+         ./Contribute.rst
+         ./Principles.rst
+         ./Modules/Module1.rst
+         ./Modules/Module2.rst
+         ./Modules/Module3.rst
+         ./Modules/Module4.rst
+         ./Modules/Module5.rst
+         ./ObsFileFormat.rst
 
-.. if-builder:: html
+   .. if-builder:: html
 
-   .. toctree::
-      :maxdepth: 2
-      :caption: Contents:
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
 
-      ./intro.rst
-      ./GetStarted.rst
-      ./Contribute.rst
-      ./Principles.rst
-      ./FiveModules.rst
-      ./Modules/Module1.rst
-      ./Modules/Module2.rst
-      ./Modules/Module3.rst
-      ./Modules/Module4.rst
-      ./Modules/Module5.rst
-      ./ObsFileFormat.rst
+   ./intro.rst
+   ./GetStarted.rst
+   ./Contribute.rst
+   ./Principles.rst
+   ./Modules/Module1.rst
+   ./Modules/Module2.rst
+   ./Modules/Module3.rst
+   ./Modules/Module4.rst
+   ./Modules/Module5.rst
+   ./ObsFileFormat.rst
 
 Indices and tables
 ==================
