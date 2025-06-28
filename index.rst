@@ -10,7 +10,7 @@ Welcome to the ROSACE project
 
 ROSACE is the acronym for **Robotic Observations and Spectrocopic Astronomy, a Collaborative Experience**
 
-The goal of this project is to develop a network of amateur and professional observatories to run Robotic Spectroscopic astronomical observations.
+This project aims to develop a network of amateur and professional observatories to run Robotic Spectroscopic astronomical observations.
 All together, we can offer a new tool to the Science to better understand our Universe.
 
 This project is based on software Open Source tools only.
