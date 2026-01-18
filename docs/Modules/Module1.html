@@ -83,6 +83,11 @@
   <section id="module-1-dome-shelter-manager">
 <span id="module1-label"></span><h1>Module 1: Dome / Shelter manager<a class="headerlink" href="#module-1-dome-shelter-manager" title="Permalink to this heading"></a></h1>
 <p>The module is part of the <a class="reference internal" href="../index.html#mainpage"><span class="std std-ref">ROSACE project</span></a></p>
+<p>This module is made to manage the Observatory infrastructure: Dome or Shelter, and weather station.</p>
+<p>It is able to decide wether we can start the observation, based on the weather station. When all is OK, it opens the dome / shelter and
+gives the order to the Module 3 (sequencer) for starting the observation.</p>
+<p>It also decide to stop observations if weather conditions are not met anymore (or simply if the night is over).</p>
+<p>In few words, mission of the Module 1 is to Protect the Instrument permanently.</p>
 </section>
 
 
@@ -96,7 +101,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2025, F. Cochard, T. Notargiacomo.</p>
+    <p>&#169; Copyright 2025, 2026, F. Cochard, T. Notargiacomo.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

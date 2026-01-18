@@ -11,14 +11,14 @@ Welcome to the ROSACE project
 ROSACE is the acronym for **Robotic Observations and Spectrocopic Astronomy, a Collaborative Experience**
 
 This project aims to develop a network of amateur and professional observatories to run Robotic Spectroscopic astronomical observations.
-All together, we can offer a new tool to the Science to better understand our Universe.
+All together, we offer a new tool to the Science to better understand our Universe.
 
 This project is based on software Open Source tools only.
 
 Robotic observation means that **no human action** is required. From opening the dome (or shelter) to processing the data and sharing the result, 
 all is automated. 
 
-The project is developed by the community: any contribution from you is welcome.
+The project is developed by the community: any contribution is welcome.
 Our intention is to propose a system that can be adapted from smallest to biggest telescopes.
 
 .. To activate if we must have different content for PDF
@@ -56,9 +56,11 @@ Our intention is to propose a system that can be adapted from smallest to bigges
    ./Modules/Module5.rst
    ./ObsFileFormat.rst
 
-Indices and tables
-==================
+Please send any comment or question to François Cochard (francois.cochard@shelyak.com)
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+.. Indices and tables
+.. ==================
+
+.. * :ref:`genindex`
+.. * :ref:`modindex`
+.. * :ref:`search`

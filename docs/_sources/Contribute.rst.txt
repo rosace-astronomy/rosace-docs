@@ -1,6 +1,8 @@
 How to Contribute
 =================
 
+Welcome to the :ref:`ROSACE project <MainPage>`.
+
 The project is developed by the community, and we need you!
 
 Here are the ways to help developing this tool:

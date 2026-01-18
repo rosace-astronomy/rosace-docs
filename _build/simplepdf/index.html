@@ -7,17 +7,17 @@
   <title>
    ROSACE documentation
   </title>
-  <link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+  <link href="_static/pygments.css?v=d75fae25" rel="stylesheet" type="text/css"/>
   <link href="_static/main.css?v=fbd3f620" rel="stylesheet" type="text/css"/>
   <script src="_static/jquery.js?v=5d32c60e">
   </script>
   <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c">
   </script>
-  <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js">
+  <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=11e84c83">
   </script>
-  <script src="_static/doctools.js">
+  <script src="_static/doctools.js?v=888ff710">
   </script>
-  <script src="_static/sphinx_highlight.js">
+  <script src="_static/sphinx_highlight.js?v=4825356b">
   </script>
   <link href="genindex.html" rel="index" title="Index"/>
   <link href="search.html" rel="search" title="Search"/>
@@ -144,7 +144,7 @@
        </p>
        <p>
         This project aims to develop a network of amateur and professional observatories to run Robotic Spectroscopic astronomical observations.
-All together, we can offer a new tool to the Science to better understand our Universe.
+All together, we offer a new tool to the Science to better understand our Universe.
        </p>
        <p>
         This project is based on software Open Source tools only.
@@ -175,7 +175,7 @@ Our intention is to propose a system that can be adapted from smallest to bigges
           This project proposes to setup your own robotic observatory for Astronomical Spectro observations.
          </p>
          <p>
-          A proposal : the name of the project is ROSACE, for
+          The name of the project is ROSACE, for
           <strong>
            Robotic Observations and Spectrocopic Astronomy, a Collaborative Experience
           </strong>
@@ -194,8 +194,28 @@ vary from one scientific goal to the other. You will probably have to &lsquo;put
 to make these adaptations as simple as possible.
          </p>
          <p>
-          To make this system accessible for everyone, we&rsquo;ve organized with independant modules, with few general rules, and the code is intended to be easy
+          We also consider that the system must be able to manage several science programs ; none can use a telescope at 100% of the time.
+A science program can have its own observing sequence and own data reduction process. in ROSACE, each observation must be part of
+a given scientific program.
+         </p>
+         <p>
+          One key of a robotic observatory is that it really runs fully automatically. If each observation requires 2 minutes of human brain,
+it will quickly be overloaded - because every night can produce dozens of observations. Then a full automatic process is required.
+The only human part can be the validation, to make sure that all went well - the system must give all the tools to do it very fast.
+         </p>
+         <p>
+          To make this system accessible for everyone, we&rsquo;ve organized the project with independant modules, with few general rules, and the code is intended to be easy
 to read and to maintain. Managing several small problems is better than a big one.
+         </p>
+         <p>
+          To help you starting with ROSACE, we propose this documentation, and a
+          <a class="reference internal" href="index.html#getstarted-label">
+           <span class="std std-ref">
+            Get Started page
+           </span>
+          </a>
+          . You can start with simulators,
+no need for a real instrument in a first step.
          </p>
          <p>
           We work over the long term. People will change, instruments will change, new science opportunities will arise. The platform must be able to adapt
@@ -206,7 +226,7 @@ evolve (the instruments, the observing sequences, and so on).
           We think that continous improvement is the best way to move forward - one small step everyday.
          </p>
          <p>
-          The system is made of five independant modules. Indepedant means that each one can be used independantly from the others. You can even use only some of them, and not all. Of course, the modules must
+          The system is made of five independant modules. Indepedant means that each one can be used without the others. You can also use only some of them, and not all. Of course, the modules must
 exchange some data, and this is done through Rest API.
          </p>
          <ul class="simple">
@@ -220,11 +240,6 @@ exchange some data, and this is done through Rest API.
             </a>
            </p>
           </li>
-         </ul>
-         <p>
-          This module&hellip;
-         </p>
-         <ul class="simple">
           <li>
            <p>
             Module 2:
@@ -235,11 +250,6 @@ exchange some data, and this is done through Rest API.
             </a>
            </p>
           </li>
-         </ul>
-         <p>
-          This module&hellip;
-         </p>
-         <ul class="simple">
           <li>
            <p>
             Module 3:
@@ -250,11 +260,6 @@ exchange some data, and this is done through Rest API.
             </a>
            </p>
           </li>
-         </ul>
-         <p>
-          This module&hellip;
-         </p>
-         <ul class="simple">
           <li>
            <p>
             Module 4:
@@ -265,29 +270,43 @@ exchange some data, and this is done through Rest API.
             </a>
            </p>
           </li>
-         </ul>
-         <p>
-          This module&hellip;
-         </p>
-         <ul class="simple">
           <li>
            <p>
             Module 5:
             <a class="reference internal" href="index.html#module5-label">
              <span class="std std-ref">
-              Display and share the results
+              Display, validate and share the results
              </span>
             </a>
            </p>
           </li>
          </ul>
          <p>
-          This module&hellip;
+          We do think that the success of this project depends on few elements :
          </p>
+         <ul class="simple">
+          <li>
+           <p>
+            The community (developers and users) must be large enough ; the system must not depend on one or few guys.
+           </p>
+          </li>
+          <li>
+           <p>
+            A clear and up-to-date documentation is available.
+           </p>
+          </li>
+          <li>
+           <p>
+            We propose a &lsquo;get started&rsquo; path, to easy jump quiclky and easily into the project.
+           </p>
+          </li>
+         </ul>
         </section>
         <span id="document-GetStarted">
         </span>
         <section id="get-started">
+         <span id="getstarted-label">
+         </span>
          <h2>
           Get started
           <a class="headerlink" href="#get-started" title="Permalink to this heading">
@@ -295,7 +314,36 @@ exchange some data, and this is done through Rest API.
           </a>
          </h2>
          <p>
-          When the project will have enough maturity, we&rsquo;ll explain how to start from scratch.
+          (this part is to be developed when the project will have enough maturity).
+         </p>
+         <p>
+          We propose here a step by step path to satrt with ROSACE.
+         </p>
+         <p>
+          We suggest to start by installing the module 2 (scheduler) and module 3 (observing sequencer). You&rsquo;ll use these modules in
+Simulators mode - no real instrument is needed.
+         </p>
+         <p>
+          (installation will be described)
+         </p>
+         <p>
+          Then, edit the configuration file, and check that the modules 2 and 3 have the right parameters.
+         </p>
+         <p>
+          Use your favorite web browser, and point it to module 3. You can start the observations.
+         </p>
+         <p>
+          &hellip; to be completed.
+         </p>
+         <p>
+          Once the Simulators mode is OK, you can switch to the real instrument. To do this, you must give the address of
+the INDI server of your observatory.
+         </p>
+         <p>
+          &hellip; check that you can control the science camera, then the telescope, and all the connected devices.
+         </p>
+         <p>
+          &hellip; to be completed
          </p>
         </section>
         <span id="document-Contribute">
@@ -307,6 +355,15 @@ exchange some data, and this is done through Rest API.
            
           </a>
          </h2>
+         <p>
+          Welcome to the
+          <a class="reference internal" href="index.html#mainpage">
+           <span class="std std-ref">
+            ROSACE project
+           </span>
+          </a>
+          .
+         </p>
          <p>
           The project is developed by the community, and we need you!
          </p>
@@ -341,6 +398,15 @@ exchange some data, and this is done through Rest API.
           </a>
          </h2>
          <p>
+          Welcome to the
+          <a class="reference internal" href="index.html#mainpage">
+           <span class="std std-ref">
+            ROSACE project
+           </span>
+          </a>
+          .
+         </p>
+         <p>
           The project is based on few principles:
          </p>
          <ul class="simple">
@@ -366,7 +432,17 @@ exchange some data, and this is done through Rest API.
            <ul>
             <li>
              <p>
-              Linux.
+              Linux
+              <a class="footnote-reference brackets" href="#id3" id="id1" role="doc-noteref">
+               <span class="fn-bracket">
+                [
+               </span>
+               3
+               <span class="fn-bracket">
+                ]
+               </span>
+              </a>
+              .
              </p>
             </li>
             <li>
@@ -376,7 +452,12 @@ exchange some data, and this is done through Rest API.
             </li>
             <li>
              <p>
-              Git for revision control and sharing the code.
+              Git for revision control.
+             </p>
+            </li>
+            <li>
+             <p>
+              Github repo to share the code.
              </p>
             </li>
             <li>
@@ -386,7 +467,7 @@ exchange some data, and this is done through Rest API.
             </li>
             <li>
              <p>
-              User interfaces in (JavaScript / TypeScript).
+              User interfaces in (JavaScript / TypeScript). Works with any web browser.
              </p>
             </li>
             <li>
@@ -440,7 +521,17 @@ exchange some data, and this is done through Rest API.
           </li>
           <li>
            <p>
-            The dome or shelter can open and close whatever is the telescope position.
+            The dome or shelter can open and close whatever is the telescope position
+            <a class="footnote-reference brackets" href="#id4" id="id2" role="doc-noteref">
+             <span class="fn-bracket">
+              [
+             </span>
+             4
+             <span class="fn-bracket">
+              ]
+             </span>
+            </a>
+            .
            </p>
           </li>
           <li>
@@ -464,6 +555,46 @@ exchange some data, and this is done through Rest API.
            </p>
           </li>
          </ul>
+         <p class="rubric">
+          Footnotes
+         </p>
+         <aside class="footnote-list brackets">
+          <aside class="footnote brackets" id="id3" role="doc-footnote">
+           <span class="label">
+            <span class="fn-bracket">
+             [
+            </span>
+            <a href="#id1" role="doc-backlink">
+             3
+            </a>
+            <span class="fn-bracket">
+             ]
+            </span>
+           </span>
+           <p>
+            We know that most of people ar using Windows. The door is not closed. Since we use Python
+(which is not platform dependant) and ASCOM (under Windows) platform offers the same kind of feature than INDI (under Linux),
+this can probably be adapted in close future - despite Windows is not Open Source.
+           </p>
+          </aside>
+          <aside class="footnote brackets" id="id4" role="doc-footnote">
+           <span class="label">
+            <span class="fn-bracket">
+             [
+            </span>
+            <a href="#id2" role="doc-backlink">
+             4
+            </a>
+            <span class="fn-bracket">
+             ]
+            </span>
+           </span>
+           <p>
+            This is a simple and efficient way to split functions and protect the instrument. But we keep in mind that this condition is not made by lots of observatories
+(most of the rolling shelter ones), and there is no strong stopper to this.
+           </p>
+          </aside>
+         </aside>
         </section>
         <span id="document-Modules/Module1">
         </span>
@@ -484,6 +615,25 @@ exchange some data, and this is done through Rest API.
            </span>
           </a>
          </p>
+         <p>
+          This module is made to manage the Observatory infrastructure: Dome or Shelter, and weather station.
+         </p>
+         <dl class="simple">
+          <dt>
+           It is able to decide wether we can start the observation, based on the weather station. When all is OK, it opens the dome / shelter and
+          </dt>
+          <dd>
+           <p>
+            gives the order to the Module 3 (sequencer) for starting the observation.
+           </p>
+          </dd>
+         </dl>
+         <p>
+          It also decide to stop observations if weather conditions are not met anymore (or simply if the night is over).
+         </p>
+         <p>
+          In few words, mission of the Module 1 is to Protect the Instrument permanently.
+         </p>
         </section>
         <span id="document-Modules/Module2">
         </span>
@@ -503,6 +653,20 @@ exchange some data, and this is done through Rest API.
             ROSACE project
            </span>
           </a>
+         </p>
+         <p>
+          Getting an observatory that is able to work automatically is good. But then, as soon as it is operationnal, the key question is:
+&lsquo;what is my next target&rsquo;.
+         </p>
+         <p>
+          This is the mission of the Module 2 to reply this question, and define at any time what is the next target to observe.
+         </p>
+         <p>
+          The strategy can be very simple - for example, you can set a list of targets in a text file.
+         </p>
+         <p>
+          But is can be also very rich if you have many observatories working together, managing multiple scientific programs. In such cases,
+the question of the next target can be tricky. This module will adapt to any cases - strating by the simple one, of course.
          </p>
         </section>
         <span id="document-Modules/Module3">
@@ -542,7 +706,7 @@ you can use existing bricks or write your owns.
           </li>
           <li>
            <p>
-            A sequence is a single list of basic steps. No loops, no conditions, the system is very rustic.
+            A sequence is a single list of basic steps. No loops, no conditions, the system is very simple.
            </p>
           </li>
           <li>
@@ -562,7 +726,7 @@ you can use existing bricks or write your owns.
           </li>
           <li>
            <p>
-            We use a common logger system ; each step can log any data it wants.
+            We use a common logging system ; each step can log any data you want.
            </p>
           </li>
           <li>
@@ -591,6 +755,23 @@ you can use existing bricks or write your owns.
            </span>
           </a>
          </p>
+         <p>
+          Once the observing data is recorded, and the observation is completed, we must process it, to get the scientific result,
+corrected from any instrumental effect.
+         </p>
+         <p>
+          This is the job of this Module 4.
+         </p>
+         <p>
+          Of course, the data reduction process depends on each scientific program.
+         </p>
+         <p>
+          In a first time, we&rsquo;ll do this reduction step thanks to SpecINTI software. Then, we&rsquo;ll develop our own process - fully Open Source, in Python.
+         </p>
+         <p>
+          The data reduction process is a list of reduction operations (like master dark, spectrum extraction or wavelength calibration). ROSACE will
+propose a list of such operations, but you can write your owns, to adapt to your case.
+         </p>
         </section>
         <span id="document-Modules/Module5">
         </span>
@@ -610,6 +791,32 @@ you can use existing bricks or write your owns.
             ROSACE project
            </span>
           </a>
+         </p>
+         <p>
+          At the end of the observing process, we must share our results and close the observation.
+         </p>
+         <p>
+          This module will do it, with some important steps:
+         </p>
+         <ol class="arabic simple">
+          <li>
+           <p>
+            Validate the data by the observer (we never know, something may have happened).
+           </p>
+          </li>
+          <li>
+           <p>
+            Send the data to the relevant repository. Depending on the science case, it can be a database, as simple mail, or any other way.
+           </p>
+          </li>
+          <li>
+           <p>
+            Archive the data (raw data and result), and fullfill the local database, to make any future search fast and easy.
+           </p>
+          </li>
+         </ol>
+         <p>
+          In a first time, we can make it manually, but as soon as the production increases, it must become automatic.
          </p>
         </section>
         <span id="document-ObsFileFormat">
@@ -692,7 +899,7 @@ seq: BeUVEX
    <div class="container">
     <div class="back-cover-footer">
      <p>
-      &copy; Copyright 2025, F. Cochard, T. Notargiacomo.
+      &copy; Copyright 2025, 2026, F. Cochard, T. Notargiacomo.
      </p>
      <p>
       Created using

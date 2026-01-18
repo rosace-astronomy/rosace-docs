@@ -82,18 +82,23 @@
   <section id="observing-file-format">
 <h1>Observing file format<a class="headerlink" href="#observing-file-format" title="Permalink to this heading"></a></h1>
 <p>Each observation is fully defined by its Observing File. This file is in yaml format (human readable, easy to edit).</p>
-<p>Here is the standard format for the Observing File:</p>
-<p>—
-name: Vega
-RA: 18h36m56.33635s
-DEC: “+38d47m01.28021975s”
-nb: 3
-exptime: 5
-x1: 100
-y1: 250
-x2: 1500
-y2: 1400
-seq: BeUVEX</p>
+<p>Here is the standard format for the Observing File (very temporary - to be completed):</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1">#Observing file format</span>
+<span class="c1">#=====================</span>
+<span class="nn">---</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Vega</span>
+<span class="nt">RA</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;18h36m56.33635s&quot;</span>
+<span class="nt">DEC</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;+38d47m01.28021975s&quot;</span><span class="w">  </span>
+<span class="nt">nb</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="nt">exptime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+<span class="nt">x1</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span>
+<span class="nt">y1</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">250</span>
+<span class="nt">x2</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1500</span>
+<span class="nt">y2</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1400</span>
+<span class="nt">seq</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Be_UVEX</span>
+<span class="nt">reduction</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Be_UVEX</span>
+</pre></div>
+</div>
 </section>
 
 
@@ -106,7 +111,7 @@ seq: BeUVEX</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2025, F. Cochard, T. Notargiacomo.</p>
+    <p>&#169; Copyright 2025, 2026, F. Cochard, T. Notargiacomo.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
