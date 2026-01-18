@@ -7,7 +7,7 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'ROSACE'
-copyright = '2025, F. Cochard, T. Notargiacomo'
+copyright = '2025, 2026, F. Cochard, T. Notargiacomo'
 author = 'F. Cochard, T. Notargiacomo'
 version = '0.0.1'
 
