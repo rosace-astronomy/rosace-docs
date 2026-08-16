@@ -1,7 +1,7 @@
 Introduction
 ============
 
-This project proposes to create your own robotic observatory for Astronomical Spectro observations.
+Rosace proposes to create your own robotic observatory for Astronomical Spectro observations.
 
 The name of the project is ROSACE, for **Robotic Observations and Spectrocopic Astronomy, a Collaborative Experience**
 

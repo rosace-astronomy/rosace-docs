@@ -1,15 +1,18 @@
 .. _Module1-label:
 
-Module 1: Dome / Shelter manager
-================================
+Step 1: session initialization
+==============================
 
-The module is part of the :ref:`ROSACE project <MainPage>`
+The step is part of the :ref:`ROSACE project <MainPage>`
 
-This module is made to manage the Observatory infrastructure: Dome or Shelter, and weather station.
+This step runs only once at the beginning of the session. It connects all the servers and devices, and starts few
+operations, like cooling down the cameras (if any).
 
-It is able to decide wether we can start the observation, based on the weather station. When all is OK, it opens the dome / shelter and 
-gives the order to the Module 3 (sequencer) for starting the observation. 
+A session_ID est created for each session, and stored in the sessions database.
 
-It also decide to stop observations if weather conditions are not met anymore (or simply if the night is over). 
+All images and data of a given session are stored in a single folder on the disk. The folder name is based on the date and time.
+The folder is defined for a time range going from noon to noon the following day (to make sure that all data of a night
+are in a single folder).
 
-In few words, mission of the Module 1 is to Protect the Instrument permanently. 
+This means that if several sessions are started during a same night (for instance if the weather is temporarly bad), they
+will all use the same folder.

@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module 4: Data Reduction &mdash; ROSACE  documentation</title>
+  <title>Step 4: Data Reduction &mdash; ROSACE  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -19,8 +19,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Module 5: Display, share and archive" href="Module5.html" />
-    <link rel="prev" title="Module 3: Sequencer" href="Module3.html" /> 
+    <link rel="next" title="Step 5: Display, share" href="Module5.html" />
+    <link rel="prev" title="Step 3: Sequencer" href="Module3.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -48,11 +48,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../GetStarted.html">Get started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Contribute.html">How to Contribute</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Principles.html">Basic principles</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Module1.html">Module 1: Dome / Shelter manager</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Module2.html">Module 2: Scheduler</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Module3.html">Module 3: Sequencer</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Module 4: Data Reduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Module5.html">Module 5: Display, share and archive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module1.html">Step 1: session initialization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module2.html">Step 2: Scheduler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module3.html">Step 3: Sequencer</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Step 4: Data Reduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module5.html">Step 5: Display, share</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module6.html">Step 5: Archive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module7.html">Step 7: Closing the session</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ObsFileFormat.html">Observing file format</a></li>
 </ul>
 
@@ -70,7 +72,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Module 4: Data Reduction</li>
+      <li class="breadcrumb-item active">Step 4: Data Reduction</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/Modules/Module4.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -80,24 +82,25 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="module-4-data-reduction">
-<span id="module4-label"></span><h1>Module 4: Data Reduction<a class="headerlink" href="#module-4-data-reduction" title="Permalink to this heading"></a></h1>
-<p>The module is part of the <a class="reference internal" href="../index.html#mainpage"><span class="std std-ref">ROSACE project</span></a></p>
+  <section id="step-4-data-reduction">
+<span id="module4-label"></span><h1>Step 4: Data Reduction<a class="headerlink" href="#step-4-data-reduction" title="Permalink to this heading"></a></h1>
+<p>The step is part of the <a class="reference internal" href="../index.html#mainpage"><span class="std std-ref">ROSACE project</span></a></p>
 <p>Once the observing data is recorded, and the observation is completed, we must process it, to get the scientific result,
 corrected from any instrumental effect.</p>
-<p>This is the job of this Module 4.</p>
+<p>This is the job of this Step 4.</p>
 <p>Of course, the data reduction process depends on each scientific program.</p>
-<p>In a first time, we’ll do this reduction step thanks to SpecINTI software. Then, we’ll develop our own process - fully Open Source, in Python.</p>
+<p>In a first time, we do this reduction step thanks to SpecINTI software. Then, we’ll develop our own process - fully Open Source, in Python.</p>
 <p>The data reduction process is a list of reduction operations (like master dark, spectrum extraction or wavelength calibration). ROSACE will
 propose a list of such operations, but you can write your owns, to adapt to your case.</p>
+<p>Like for the Sequencer, this is the Observation file that moves the whole data of the observation through all the data reduction steps.</p>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="Module3.html" class="btn btn-neutral float-left" title="Module 3: Sequencer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="Module5.html" class="btn btn-neutral float-right" title="Module 5: Display, share and archive" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Module3.html" class="btn btn-neutral float-left" title="Step 3: Sequencer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Module5.html" class="btn btn-neutral float-right" title="Step 5: Display, share" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

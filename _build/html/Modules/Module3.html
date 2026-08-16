@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module 3: Sequencer &mdash; ROSACE  documentation</title>
+  <title>Step 3: Sequencer &mdash; ROSACE  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -19,8 +19,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Module 4: Data Reduction" href="Module4.html" />
-    <link rel="prev" title="Module 2: Scheduler" href="Module2.html" /> 
+    <link rel="next" title="Step 4: Data Reduction" href="Module4.html" />
+    <link rel="prev" title="Step 2: Scheduler" href="Module2.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -48,11 +48,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../GetStarted.html">Get started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Contribute.html">How to Contribute</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Principles.html">Basic principles</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Module1.html">Module 1: Dome / Shelter manager</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Module2.html">Module 2: Scheduler</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Module 3: Sequencer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Module4.html">Module 4: Data Reduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Module5.html">Module 5: Display, share and archive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module1.html">Step 1: session initialization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module2.html">Step 2: Scheduler</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Step 3: Sequencer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module4.html">Step 4: Data Reduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module5.html">Step 5: Display, share</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module6.html">Step 5: Archive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module7.html">Step 7: Closing the session</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ObsFileFormat.html">Observing file format</a></li>
 </ul>
 
@@ -70,7 +72,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Module 3: Sequencer</li>
+      <li class="breadcrumb-item active">Step 3: Sequencer</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/Modules/Module3.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -80,21 +82,21 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="module-3-sequencer">
-<span id="module3-label"></span><h1>Module 3: Sequencer<a class="headerlink" href="#module-3-sequencer" title="Permalink to this heading"></a></h1>
+  <section id="step-3-sequencer">
+<span id="module3-label"></span><h1>Step 3: Sequencer<a class="headerlink" href="#step-3-sequencer" title="Permalink to this heading"></a></h1>
 <p>The module is part of the <a class="reference internal" href="../index.html#mainpage"><span class="std std-ref">ROSACE project</span></a></p>
 <p>This module is the core of the Robotic observation. It runs all the steps of an observation sequence.</p>
-<p>Each observation runs a given observing sequence. You can write your own sequence, to match your scientific need. The sequence is made of “bricks” ;
-you can use existing bricks or write your owns.</p>
+<p>Each observation runs a given observing sequence. You can write your own sequence, to match your scientific need. The sequence is made of plugins ;
+you can use existing plugins or write your owns (in Python). We’ve blank plugins to help you creating your own.</p>
 <p>Here are the main (and required) principles for this module:</p>
 <ol class="arabic simple">
 <li><p>Each observation uses a specific sequence (mainly linked to the scientific goal of the observation).</p></li>
 <li><p>A sequence is a single list of basic steps. No loops, no conditions, the system is very simple.</p></li>
-<li><p>A single structure is used to give each step all the data it needs (target star, exposure duration, and so on).</p></li>
+<li><p>A single structure (Observation object) is used to give each step all the data it needs (target star, exposure duration, and so on).</p></li>
 <li><p>This structure can be append by each step.</p></li>
 <li><p>This structure is also used at the end of the process to write the “Observing file”, needed for the data reduction.</p></li>
 <li><p>We use a common logging system ; each step can log any data you want.</p></li>
-<li><p>Each step ends by a standard ‘return’, that allow the sequence to continue, or to stop if a problem occured.</p></li>
+<li><p>If an error occurs during a step, an exception is raised, and the observation is stopped. Then a new observation is started, from the scheduler.</p></li>
 </ol>
 </section>
 
@@ -102,8 +104,8 @@ you can use existing bricks or write your owns.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="Module2.html" class="btn btn-neutral float-left" title="Module 2: Scheduler" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="Module4.html" class="btn btn-neutral float-right" title="Module 4: Data Reduction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Module2.html" class="btn btn-neutral float-left" title="Step 2: Scheduler" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Module4.html" class="btn btn-neutral float-right" title="Step 4: Data Reduction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

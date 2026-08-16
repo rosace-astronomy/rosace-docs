@@ -9,7 +9,7 @@
 project = 'ROSACE'
 copyright = '2025, 2026, F. Cochard, T. Notargiacomo'
 author = 'F. Cochard, T. Notargiacomo'
-version = '0.0.1'
+version = '0.0.2'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration

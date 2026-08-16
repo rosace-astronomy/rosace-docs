@@ -5,7 +5,7 @@ Welcome to the :ref:`ROSACE project <MainPage>`.
 
 The project is based on few principles:
 
-* An observation is a consistent set of images and data, collected in an Observation File (yaml format).
+* An observation is a consistent set of images and data, described in an Observation File (yaml format).
 * All files of one observing night are saved in a single folder
 * All images and spectra are in FTIS format (which is THE format for astronomy files).
 * We use only Open Source tools:

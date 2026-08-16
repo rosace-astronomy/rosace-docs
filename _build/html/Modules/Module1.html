@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module 1: Dome / Shelter manager &mdash; ROSACE  documentation</title>
+  <title>Step 1: session initialization &mdash; ROSACE  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -19,7 +19,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Module 2: Scheduler" href="Module2.html" />
+    <link rel="next" title="Step 2: Scheduler" href="Module2.html" />
     <link rel="prev" title="Basic principles" href="../Principles.html" /> 
 </head>
 
@@ -48,11 +48,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../GetStarted.html">Get started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Contribute.html">How to Contribute</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Principles.html">Basic principles</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Module 1: Dome / Shelter manager</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Module2.html">Module 2: Scheduler</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Module3.html">Module 3: Sequencer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Module4.html">Module 4: Data Reduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Module5.html">Module 5: Display, share and archive</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Step 1: session initialization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module2.html">Step 2: Scheduler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module3.html">Step 3: Sequencer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module4.html">Step 4: Data Reduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module5.html">Step 5: Display, share</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module6.html">Step 5: Archive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module7.html">Step 7: Closing the session</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ObsFileFormat.html">Observing file format</a></li>
 </ul>
 
@@ -70,7 +72,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Module 1: Dome / Shelter manager</li>
+      <li class="breadcrumb-item active">Step 1: session initialization</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/Modules/Module1.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -80,14 +82,17 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="module-1-dome-shelter-manager">
-<span id="module1-label"></span><h1>Module 1: Dome / Shelter manager<a class="headerlink" href="#module-1-dome-shelter-manager" title="Permalink to this heading"></a></h1>
-<p>The module is part of the <a class="reference internal" href="../index.html#mainpage"><span class="std std-ref">ROSACE project</span></a></p>
-<p>This module is made to manage the Observatory infrastructure: Dome or Shelter, and weather station.</p>
-<p>It is able to decide wether we can start the observation, based on the weather station. When all is OK, it opens the dome / shelter and
-gives the order to the Module 3 (sequencer) for starting the observation.</p>
-<p>It also decide to stop observations if weather conditions are not met anymore (or simply if the night is over).</p>
-<p>In few words, mission of the Module 1 is to Protect the Instrument permanently.</p>
+  <section id="step-1-session-initialization">
+<span id="module1-label"></span><h1>Step 1: session initialization<a class="headerlink" href="#step-1-session-initialization" title="Permalink to this heading"></a></h1>
+<p>The step is part of the <a class="reference internal" href="../index.html#mainpage"><span class="std std-ref">ROSACE project</span></a></p>
+<p>This step runs only once at the beginning of the session. It connects all the servers and devices, and starts few
+operations, like cooling down the cameras (if any).</p>
+<p>A session_ID est created for each session, and stored in the sessions database.</p>
+<p>All images and data of a given session are stored in a single folder on the disk. The folder name is based on the date and time.
+The folder is defined for a time range going from noon to noon the following day (to make sure that all data of a night
+are in a single folder).</p>
+<p>This means that if several sessions are started during a same night (for instance if the weather is temporarly bad), they
+will all use the same folder.</p>
 </section>
 
 
@@ -95,7 +100,7 @@ gives the order to the Module 3 (sequencer) for starting the observation.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../Principles.html" class="btn btn-neutral float-left" title="Basic principles" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="Module2.html" class="btn btn-neutral float-right" title="Module 2: Scheduler" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Module2.html" class="btn btn-neutral float-right" title="Step 2: Scheduler" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
