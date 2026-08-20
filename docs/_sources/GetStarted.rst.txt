@@ -3,24 +3,19 @@
 Get started
 ===========
 
-(this part is to be developed when the project will have enough maturity).
+(this part is to be completed when the project will have enough maturity).
 
-We propose here a step by step path to satrt with ROSACE.
+We propose here a step by step path to start with ROSACE.
 
-We suggest to start by installing the module 2 (scheduler) and module 3 (observing sequencer). You'll use these modules in
-Simulators mode - no real instrument is needed. 
+1. The first step is to use a Docker container, with a demo version of ROSACE. It will allow you to test the system in 
+a basic way, and quiclky understand the main features : start and stop a session, define targets to observe, look at 
+the simulated images and the observations file, check the log, change the configuration files, and so on.
 
-(installation will be described)
+2. The next step is to install the application on your computer to test it in real conditions. We recommend to start 
+with the INDI simulator devices (camera, mount). This can be managed by Kstars software. You must install few other
+applications for a working setup (Kstars, PHD2 guiding)... You'll be able to work with ROSACE in close to real conditions.
 
-Then, edit the configuration file, and check that the modules 2 and 3 have the right parameters.
+3. The final step is to connect your own instruments to the applications. You'll probably have to adapt few plugins,
+and configuration files - this will allow you to start running real observations!
 
-Use your favorite web browser, and point it to module 3. You can start the observations. 
-
-... to be completed.
-
-Once the Simulators mode is OK, you can switch to the real instrument. To do this, you must give the address of
-the INDI server of your observatory. 
-
-... check that you can control the science camera, then the telescope, and all the connected devices.
-
-... to be completed
+... to be completed (Aug. 2026)

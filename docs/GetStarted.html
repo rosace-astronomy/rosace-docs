@@ -48,11 +48,13 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Get started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Contribute.html">How to Contribute</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Principles.html">Basic principles</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Modules/Module1.html">Module 1: Dome / Shelter manager</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Modules/Module2.html">Module 2: Scheduler</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Modules/Module3.html">Module 3: Sequencer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Modules/Module4.html">Module 4: Data Reduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Modules/Module5.html">Module 5: Display, share and archive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Modules/Module1.html">Step 1: session initialization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Modules/Module2.html">Step 2: Scheduler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Modules/Module3.html">Step 3: Sequencer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Modules/Module4.html">Step 4: Data Reduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Modules/Module5.html">Step 5: Display, share</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Modules/Module6.html">Step 5: Archive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Modules/Module7.html">Step 7: Closing the session</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ObsFileFormat.html">Observing file format</a></li>
 </ul>
 
@@ -82,18 +84,17 @@
              
   <section id="get-started">
 <span id="getstarted-label"></span><h1>Get started<a class="headerlink" href="#get-started" title="Permalink to this heading"></a></h1>
-<p>(this part is to be developed when the project will have enough maturity).</p>
-<p>We propose here a step by step path to satrt with ROSACE.</p>
-<p>We suggest to start by installing the module 2 (scheduler) and module 3 (observing sequencer). You’ll use these modules in
-Simulators mode - no real instrument is needed.</p>
-<p>(installation will be described)</p>
-<p>Then, edit the configuration file, and check that the modules 2 and 3 have the right parameters.</p>
-<p>Use your favorite web browser, and point it to module 3. You can start the observations.</p>
-<p>… to be completed.</p>
-<p>Once the Simulators mode is OK, you can switch to the real instrument. To do this, you must give the address of
-the INDI server of your observatory.</p>
-<p>… check that you can control the science camera, then the telescope, and all the connected devices.</p>
-<p>… to be completed</p>
+<p>(this part is to be completed when the project will have enough maturity).</p>
+<p>We propose here a step by step path to start with ROSACE.</p>
+<p>1. The first step is to use a Docker container, with a demo version of ROSACE. It will allow you to test the system in
+a basic way, and quiclky understand the main features : start and stop a session, define targets to observe, look at
+the simulated images and the observations file, check the log, change the configuration files, and so on.</p>
+<p>2. The next step is to install the application on your computer to test it in real conditions. We recommend to start
+with the INDI simulator devices (camera, mount). This can be managed by Kstars software. You must install few other
+applications for a working setup (Kstars, PHD2 guiding)… You’ll be able to work with ROSACE in close to real conditions.</p>
+<p>3. The final step is to connect your own instruments to the applications. You’ll probably have to adapt few plugins,
+and configuration files - this will allow you to start running real observations!</p>
+<p>… to be completed (Aug. 2026)</p>
 </section>
 
 

@@ -23,7 +23,7 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'rosace-docs']
 
 simplepdf_vars = {
     'primary': '#333333',
-    'links': '#FF3333',
+    'links': "#D82121CF",
 }
 
 # -- Options for HTML output -------------------------------------------------
