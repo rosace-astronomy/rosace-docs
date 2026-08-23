@@ -24,6 +24,9 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'rosace-docs']
 simplepdf_vars = {
     'primary': '#333333',
     'links': "#D82121CF",
+    'cover-bg': "#B19D865C",
+    'cover-overlay': "#B19D865C",
+    'bottom-center-content': '"ROSACE documentation - "counter(page)',
 }
 
 # -- Options for HTML output -------------------------------------------------

@@ -1,5 +1,7 @@
-Basic principles
-================
+.. _TechnicalChoices-label:
+
+Technical choices
+=================
 
 Welcome to the :ref:`ROSACE project <MainPage>`.
 
