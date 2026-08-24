@@ -19,7 +19,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Get started" href="GetStarted.html" />
+    <link rel="next" title="Why Robotic Spectroscopy" href="Why_Robotic_Spectroscopy.html" />
     <link rel="prev" title="Welcome to the ROSACE project" href="index.html" /> 
 </head>
 
@@ -45,16 +45,19 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Why_Robotic_Spectroscopy.html">Why Robotic Spectroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="What_does_ROSACE.html">What does (and what does not) ROSACE software?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ROSACE_at_glance.html">ROSACE at a glance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Technical_choices.html">Technical choices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GetStarted.html">Get started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Contribute.html">How to Contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Principles.html">Basic principles</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Modules/Module1.html">Module 1: session initialization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Modules/Module2.html">Module 2: Scheduler</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Modules/Module3.html">Module 3: Sequencer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Modules/Module4.html">Module 4: Data Reduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Modules/Module5.html">Module 5: Display, share</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Modules/Module6.html">Module 5: Archive</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Modules/Module7.html">Module 7: Closing the session</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Modules/Module1.html">Step 1: session initialization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Modules/Module2.html">Step 2: Scheduler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Modules/Module3.html">Step 3: Sequencer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Modules/Module4.html">Step 4: Data Reduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Modules/Module5.html">Step 5: Display, share</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Modules/Module6.html">Step 6: Archive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Modules/Module7.html">Step 7: Closing the session</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ObsFileFormat.html">Observing file format</a></li>
 </ul>
 
@@ -84,7 +87,8 @@
              
   <section id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading"></a></h1>
-<p>Rosace proposes to create your own robotic observatory for Astronomical Spectro observations.</p>
+<p>Welcome to the <a class="reference internal" href="index.html#mainpage"><span class="std std-ref">ROSACE project</span></a>.</p>
+<p>Rosace proposes to create your own robotic observatory for Astronomical Spectroscopic observations.</p>
 <p>The name of the project is ROSACE, for <strong>Robotic Observations and Spectrocopic Astronomy, a Collaborative Experience</strong></p>
 <p>Our intention is that many observers, with different instruments and for various scientific programs can use this system. The final goal is that we can produce
 all together valuable data for the science, for a better understanding of the Universe we’re living in.</p>
@@ -105,37 +109,19 @@ no need for a real instrument in a first step.</p>
 to all these changes. To make this, we do our best to be clear on what is stable over the time (for instance the Observing File format), and what can
 evolve (the instruments, the observing sequences, and so on).</p>
 <p>We think that continous improvement is the best way to move forward - one small step everyday.</p>
-<p>The core of the system is an Orchestrator. It manages the observations from initialization of the observatory to its closure, and runs the observing and data reduction sequences for each target stars.
-The observing sequence is made of plugins, that you can adapt to your own needs. And the same for the data reduction sequence.</p>
-<p>Before starting the observing process, you must make sure that the observing conditions (weather) are good enough - this is out of the scope of ROSACE.</p>
-<p>The Orchestrator runs different steps, one after the other. This is described in this figure:</p>
-<a class="reference internal image-reference" href="_images/Schema_ROSACE.png"><img alt="_images/Schema_ROSACE.png" class="align-center" src="_images/Schema_ROSACE.png" style="width: 600.0px; height: 400.0px;" /></a>
-<p>It has a simple behavior: it starts the session by an INIT step (for instance to connect the hardware and cooling down the cameras).
-Then, it loops for each target the scheduler (to define what is the next target), the sequencer (for data acquisition), the data reduction
-and the sharing (to send the data to the right place, like a database). At the end of the session, it closes it (disconnect the hardware, and so on).</p>
-<p>Each step for the sequencer and data reduction is made of plugins that you can adapt to your own needs.</p>
-<p>The list of plugins that must be used for a given observation are descrived in a Program file (.yaml format). This means the each observation
-can have it own sequence (for data acquisiton, for data reduction, and for sharing).The plugins are dynamically loaded.</p>
-<p>The Orchestrator creates an Observation file at the beginning of the observation. This file will go through all the steps (plugins),
-and each plugin will enrich it. At the end of the observation, this Observation file is the memory of the observation.
-All necessary data are recorded there: date, target, scientific program, raw images, data processing steps, and at the end the processed spectrum.</p>
-<p>This Observation file is the only information that is known by each plugin. This makes all plugins independant from each other - and this is why it is easy to make or adapt your own plugins.</p>
-<p>You’ll find more details of each step in the following pages:</p>
-<ul class="simple">
-<li><p>Step 1: <a class="reference internal" href="Modules/Module1.html#module1-label"><span class="std std-ref">initialization (once at the beginning of the session)</span></a></p></li>
-<li><p>Step 2: <a class="reference internal" href="Modules/Module2.html#module2-label"><span class="std std-ref">Shelduler (what is the next target to observe)</span></a></p></li>
-<li><p>Step 3: <a class="reference internal" href="Modules/Module3.html#module3-label"><span class="std std-ref">Sequencer (run the actual observation)</span></a></p></li>
-<li><p>Step 4: <a class="reference internal" href="Modules/Module4.html#module4-label"><span class="std std-ref">Data reduction (to get a scientific result)</span></a></p></li>
-<li><p>Step 5: <a class="reference internal" href="Modules/Module5.html#module5-label"><span class="std std-ref">Display, validate and share the results</span></a></p></li>
-<li><p>Step 6: <a class="reference internal" href="Modules/Module6.html#module6-label"><span class="std std-ref">Archiving the results</span></a></p></li>
-<li><p>Step 7: <a class="reference internal" href="Modules/Module7.html#module7-label"><span class="std std-ref">Closing the session (once at the end of the session)</span></a></p></li>
-</ul>
 <p>We do think that the success of this project depends on few elements :</p>
 <ul class="simple">
 <li><p>The community (developers and users) must be large enough ; the system must not depend on one or few guys.</p></li>
 <li><p>A clear and up-to-date documentation is available.</p></li>
 <li><p>We propose a ‘get started’ path, to jump quiclky and easily into the project.</p></li>
 <li><p>The team is very open to newcomers - you’re welcome!</p></li>
+</ul>
+<p>In the next pages, you’ll find more details:</p>
+<ul class="simple">
+<li><p>Why doing <a class="reference internal" href="Why_Robotic_Spectroscopy.html#whyroboticspectro-label"><span class="std std-ref">Robotic Spectroscopy in Astronomy</span></a>?</p></li>
+<li><p>What does (and does NOT) <a class="reference internal" href="What_does_ROSACE.html#whatdoesrosace-label"><span class="std std-ref">ROSACE</span></a>?</p></li>
+<li><p>To get a technical overview: <a class="reference internal" href="ROSACE_at_glance.html#ataglance-label"><span class="std std-ref">ROSACE at a glance</span></a>.</p></li>
+<li><p>A list of <a class="reference internal" href="Technical_choices.html#technicalchoices-label"><span class="std std-ref">technical choices</span></a> that apply to ROSACE.</p></li>
 </ul>
 </section>
 
@@ -144,7 +130,7 @@ All necessary data are recorded there: date, target, scientific program, raw ima
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="index.html" class="btn btn-neutral float-left" title="Welcome to the ROSACE project" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="GetStarted.html" class="btn btn-neutral float-right" title="Get started" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Why_Robotic_Spectroscopy.html" class="btn btn-neutral float-right" title="Why Robotic Spectroscopy" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

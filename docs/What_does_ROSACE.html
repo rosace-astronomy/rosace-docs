@@ -1,0 +1,153 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What does (and what does not) ROSACE software? &mdash; ROSACE  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=b3ba4146"></script>
+      <script src="_static/doctools.js?v=888ff710"></script>
+      <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="ROSACE at a glance" href="ROSACE_at_glance.html" />
+    <link rel="prev" title="Why Robotic Spectroscopy" href="Why_Robotic_Spectroscopy.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            ROSACE
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Why_Robotic_Spectroscopy.html">Why Robotic Spectroscopy</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">What does (and what does not) ROSACE software?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ROSACE_at_glance.html">ROSACE at a glance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Technical_choices.html">Technical choices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GetStarted.html">Get started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Contribute.html">How to Contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Modules/Module1.html">Step 1: session initialization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Modules/Module2.html">Step 2: Scheduler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Modules/Module3.html">Step 3: Sequencer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Modules/Module4.html">Step 4: Data Reduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Modules/Module5.html">Step 5: Display, share</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Modules/Module6.html">Step 6: Archive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Modules/Module7.html">Step 7: Closing the session</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ObsFileFormat.html">Observing file format</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ROSACE</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">What does (and what does not) ROSACE software?</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/What_does_ROSACE.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="what-does-and-what-does-not-rosace-software">
+<span id="whatdoesrosace-label"></span><h1>What does (and what does not) ROSACE software?<a class="headerlink" href="#what-does-and-what-does-not-rosace-software" title="Permalink to this heading"></a></h1>
+<p>Welcome to the <a class="reference internal" href="index.html#mainpage"><span class="std std-ref">ROSACE project</span></a>.</p>
+<p>At the time of its creation (summer 2026), ROSACE was essentially an open-source software platform designed to
+automate observations. This software acts as an orchestrator, linking together various tasks: initializing the
+observation session, defining the next target to be observed, executing the observation sequence, processing the
+data, validating and sharing the results, and closing the session. These tasks are common to all instruments and
+all scientific programs; they form the core of spectroscopic observations.</p>
+<p>Where each observatory’s specific characteristics come into play is in the concrete actions of the observation
+sequence and data reduction. These actions are carried out by “plugins” (software modules), and this is where
+each observatory can adapt to its hardware and scientific program(s).</p>
+<p>Of course, not everything needs to be rewritten from scratch each time, since even though the instruments differ,
+a large portion of the specific tasks remains very similar. The approach is in the spirit of the open-source
+community: we build upon what our predecessors have already done as much as possible (thanks to them!), so we
+can focus solely on what is specific to our application.</p>
+<p>ROSACE therefore provides a working platform based on several key principles:</p>
+<ul class="simple">
+<li><p>An orchestrator capable of sequencing observations, with an initialization phase and a session closure phase. Data reduction and result dissemination tasks are performed in the background (to avoid wasting valuable observation time).</p></li>
+<li><p>An observation is a coherent set of information (date, target, images, data reduction steps, results). All this information is compiled into an observation file (in .yaml format) that is created at the start of the observation and is updated step by step as the process progresses. At the end of the observation, it serves as a comprehensive record of the observation.</p></li>
+<li><p>All information related to an observation session (images, observation file, results, etc.) is gathered in a single directory: the session directory.</p></li>
+<li><p>A local database containing all observable objects; there’s no need to be constantly connected to observe. And, of course, objects can easily be added to this database.</p></li>
+<li><p>A centralized configuration file (there is also a separate hardware configuration file, which allows for the management of multiple different instruments).</p></li>
+<li><p>A centralized logging system is also included to keep track of all events that occur during the observation session. Another local database records all sessions and all observations.</p></li>
+<li><p>A mechanism for dynamically loading plugins. The list of plugins for a given observation is specified in an observation program file (also in .yaml format). This is what makes it possible to perform different observations for different scientific programs within a single session.</p></li>
+<li><p>The application has a user interface (web browser), but can also operate without one (robotic observations assume that there is no observer in front of a screen!).</p></li>
+</ul>
+<p>What ROSACE DOES NOT DO:</p>
+<ul class="simple">
+<li><p>An external device must decide when to start and stop observations based on observation conditions (weather, day/night, etc.). This device must ensure the instrument’s safety. ROSACE can be interrupted, but will not shut down on its own.</p></li>
+<li><p>ROSACE is not a scientific program in and of itself. It allows you to connect to various programs; it is likely that the number of such programs will increase in the coming years.</p></li>
+<li><p>ROSACE does not guarantee that it will work with your instrument as-is. There will most likely be an adaptation phase, which will require you to “tinker (a bit) with the code.”</p></li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Why_Robotic_Spectroscopy.html" class="btn btn-neutral float-left" title="Why Robotic Spectroscopy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ROSACE_at_glance.html" class="btn btn-neutral float-right" title="ROSACE at a glance" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, 2026, F. Cochard, T. Notargiacomo.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

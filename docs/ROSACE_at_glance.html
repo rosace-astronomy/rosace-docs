@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>How to Contribute &mdash; ROSACE  documentation</title>
+  <title>ROSACE at a glance &mdash; ROSACE  documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
@@ -19,8 +19,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Step 1: session initialization" href="Modules/Module1.html" />
-    <link rel="prev" title="Get started" href="GetStarted.html" /> 
+    <link rel="next" title="Technical choices" href="Technical_choices.html" />
+    <link rel="prev" title="What does (and what does not) ROSACE software?" href="What_does_ROSACE.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -47,10 +47,10 @@
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Why_Robotic_Spectroscopy.html">Why Robotic Spectroscopy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="What_does_ROSACE.html">What does (and what does not) ROSACE software?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ROSACE_at_glance.html">ROSACE at a glance</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ROSACE at a glance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Technical_choices.html">Technical choices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GetStarted.html">Get started</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">How to Contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Contribute.html">How to Contribute</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Modules/Module1.html">Step 1: session initialization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Modules/Module2.html">Step 2: Scheduler</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Modules/Module3.html">Step 3: Sequencer</a></li>
@@ -75,9 +75,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">How to Contribute</li>
+      <li class="breadcrumb-item active">ROSACE at a glance</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/Contribute.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/ROSACE_at_glance.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -85,15 +85,36 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="how-to-contribute">
-<h1>How to Contribute<a class="headerlink" href="#how-to-contribute" title="Permalink to this heading"></a></h1>
+  <section id="rosace-at-a-glance">
+<span id="ataglance-label"></span><h1>ROSACE at a glance<a class="headerlink" href="#rosace-at-a-glance" title="Permalink to this heading"></a></h1>
 <p>Welcome to the <a class="reference internal" href="index.html#mainpage"><span class="std std-ref">ROSACE project</span></a>.</p>
-<p>The project is developed by the community, and we need you!</p>
-<p>Here are the ways to help developing this tool:</p>
+<p>The core of the system is an Orchestrator. It manages the observations from initialization of the observatory
+to its closure, and runs the observing and data reduction sequences for each target stars.
+The observing sequence is made of plugins, that you can adapt to your own needs. And the same for the data
+reduction sequence.</p>
+<p>Before starting the observing process, you must make sure that the observing conditions (weather) are good
+enough - this is out of the scope of ROSACE.</p>
+<p>The Orchestrator runs different steps, one after the other. This is described in this figure:</p>
+<a class="reference internal image-reference" href="_images/Schema_ROSACE.png"><img alt="_images/Schema_ROSACE.png" class="align-center" src="_images/Schema_ROSACE.png" style="width: 600.0px; height: 400.0px;" /></a>
+<p>It has a simple behavior: it starts the session by an INIT step (for instance to connect the hardware and cooling down the cameras).
+Then, it loops for each target the scheduler (to define what is the next target), the sequencer (for data acquisition), the data reduction
+and the sharing (to send the data to the right place, like a database). At the end of the session, it closes it (disconnect the hardware, and so on).</p>
+<p>Each step for the sequencer and data reduction is made of plugins that you can adapt to your own needs.</p>
+<p>The list of plugins that must be used for a given observation are descrived in a Program file (.yaml format). This means the each observation
+can have it own sequence (for data acquisiton, for data reduction, and for sharing).The plugins are dynamically loaded.</p>
+<p>The Orchestrator creates an Observation file at the beginning of the observation. This file will go through all the steps (plugins),
+and each plugin will enrich it. At the end of the observation, this Observation file is the memory of the observation.
+All necessary data are recorded there: date, target, scientific program, raw images, data processing steps, and at the end the processed spectrum.</p>
+<p>This Observation file is the only information that is known by each plugin. This makes all plugins independant from each other - and this is why it is easy to make or adapt your own plugins.</p>
+<p>You’ll find more details of each step in the following pages:</p>
 <ul class="simple">
-<li><p>Install your own observatory and give us any user feedback</p></li>
-<li><p>If you’re a developper, contact us and tell you where you can help (there is so much to do!)</p></li>
-<li><p>Write and/or translate the documentation (the plan is to get only an english version, but we never know)</p></li>
+<li><p>Step 1: <a class="reference internal" href="Modules/Module1.html#module1-label"><span class="std std-ref">initialization (once at the beginning of the session)</span></a></p></li>
+<li><p>Step 2: <a class="reference internal" href="Modules/Module2.html#module2-label"><span class="std std-ref">Shelduler (what is the next target to observe)</span></a></p></li>
+<li><p>Step 3: <a class="reference internal" href="Modules/Module3.html#module3-label"><span class="std std-ref">Sequencer (run the actual observation)</span></a></p></li>
+<li><p>Step 4: <a class="reference internal" href="Modules/Module4.html#module4-label"><span class="std std-ref">Data reduction (to get a scientific result)</span></a></p></li>
+<li><p>Step 5: <a class="reference internal" href="Modules/Module5.html#module5-label"><span class="std std-ref">Display, validate and share the results</span></a></p></li>
+<li><p>Step 6: <a class="reference internal" href="Modules/Module6.html#module6-label"><span class="std std-ref">Archiving the results</span></a></p></li>
+<li><p>Step 7: <a class="reference internal" href="Modules/Module7.html#module7-label"><span class="std std-ref">Closing the session (once at the end of the session)</span></a></p></li>
 </ul>
 </section>
 
@@ -101,8 +122,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="GetStarted.html" class="btn btn-neutral float-left" title="Get started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="Modules/Module1.html" class="btn btn-neutral float-right" title="Step 1: session initialization" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="What_does_ROSACE.html" class="btn btn-neutral float-left" title="What does (and what does not) ROSACE software?" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Technical_choices.html" class="btn btn-neutral float-right" title="Technical choices" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

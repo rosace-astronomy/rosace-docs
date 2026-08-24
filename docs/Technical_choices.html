@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>How to Contribute &mdash; ROSACE  documentation</title>
+  <title>Technical choices &mdash; ROSACE  documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
@@ -19,8 +19,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Step 1: session initialization" href="Modules/Module1.html" />
-    <link rel="prev" title="Get started" href="GetStarted.html" /> 
+    <link rel="next" title="Get started" href="GetStarted.html" />
+    <link rel="prev" title="ROSACE at a glance" href="ROSACE_at_glance.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -48,9 +48,9 @@
 <li class="toctree-l1"><a class="reference internal" href="Why_Robotic_Spectroscopy.html">Why Robotic Spectroscopy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="What_does_ROSACE.html">What does (and what does not) ROSACE software?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ROSACE_at_glance.html">ROSACE at a glance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Technical_choices.html">Technical choices</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Technical choices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GetStarted.html">Get started</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">How to Contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Contribute.html">How to Contribute</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Modules/Module1.html">Step 1: session initialization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Modules/Module2.html">Step 2: Scheduler</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Modules/Module3.html">Step 3: Sequencer</a></li>
@@ -75,9 +75,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">How to Contribute</li>
+      <li class="breadcrumb-item active">Technical choices</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/Contribute.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/Technical_choices.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -85,24 +85,66 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="how-to-contribute">
-<h1>How to Contribute<a class="headerlink" href="#how-to-contribute" title="Permalink to this heading"></a></h1>
+  <section id="technical-choices">
+<span id="technicalchoices-label"></span><h1>Technical choices<a class="headerlink" href="#technical-choices" title="Permalink to this heading"></a></h1>
 <p>Welcome to the <a class="reference internal" href="index.html#mainpage"><span class="std std-ref">ROSACE project</span></a>.</p>
-<p>The project is developed by the community, and we need you!</p>
-<p>Here are the ways to help developing this tool:</p>
+<p>The project is based on few principles:</p>
 <ul class="simple">
-<li><p>Install your own observatory and give us any user feedback</p></li>
-<li><p>If you’re a developper, contact us and tell you where you can help (there is so much to do!)</p></li>
-<li><p>Write and/or translate the documentation (the plan is to get only an english version, but we never know)</p></li>
+<li><p>An observation is a consistent set of images and data, described in an Observation File (yaml format).</p></li>
+<li><p>All files of one observing night are saved in a single folder.</p></li>
+<li><p>All images and spectra are in FTIS format (which is THE format for astronomy files).</p></li>
+<li><p>There is a single configuration file (in yaml format) for the whole application.</p></li>
+<li><p>There is also a hardware configuration file for each setup (telescope, mount, spectroscope, cameras…)</p></li>
+<li><p>We apply the TDD (Tests Driven Development) method. Each module or plugin has a series of tests to ensure there is no regression over the time.</p></li>
+<li><p>We propose a User Interface (UI) for the orchestrator, but the system can be used with no UI (which is the common way).</p></li>
+<li><p>All targets stars to be observed are stored in a local database (SQLite), to be able to observe even without internet connexion.</p></li>
+<li><p>We use only Open Source tools:</p>
+<ul>
+<li><p>Linux <a class="footnote-reference brackets" href="#f1" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p></li>
+<li><p>Python (3.10 or above) as much as possible.</p></li>
+<li><p>Git for revision control.</p></li>
+<li><p>Github repo to share the code.</p></li>
+<li><p>Rest API interfaces (to split front-end and back-end).</p></li>
+<li><p>User interfaces in (TypeScript - X4 framework). Works with any web browser.</p></li>
+<li><p>INDI server and devices (INDI is for Linux what ASCOM is for Windows).</p></li>
+<li><p>Sphinx for the documentation.</p></li>
+<li><p>Few standard Python libraries :</p>
+<ul>
+<li><p>Astropy, for all Astronomy related stuff.</p></li>
+<li><p>FastAPI for the Rest API interfaces.</p></li>
+<li><p>SQLite database for targets and observations records.</p></li>
+<li><p>Logging for the loggers (all actions are recorded).</p></li>
 </ul>
+</li>
+</ul>
+</li>
+<li><p>The dome or shelter can open and close whatever is the telescope position <a class="footnote-reference brackets" href="#f2" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>.</p></li>
+<li><p>Each module can be installed locally or remotely (client-server architecture).</p></li>
+<li><p>We can use Kstars for monitoring the actions (very useful for debugging).</p></li>
+<li><p>We love the concept of continuous improvement ; a small step every day.</p></li>
+</ul>
+<p class="rubric">Footnotes</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="f1" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>We know that most of people are using Windows. The door is not closed. Since we use Python
+(which is not platform dependant) and ASCOM (under Windows) platform offers the same kind of feature than INDI (under Linux),
+this can probably be adapted in close future - despite Windows is not Open Source.</p>
+</aside>
+<aside class="footnote brackets" id="f2" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>This is a simple and efficient way to split functions and protect the instrument. But we keep in mind that this condition is not made by lots of observatories
+(most of the rolling shelter ones), and there is no strong stopper to this.</p>
+</aside>
+</aside>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="GetStarted.html" class="btn btn-neutral float-left" title="Get started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="Modules/Module1.html" class="btn btn-neutral float-right" title="Step 1: session initialization" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="ROSACE_at_glance.html" class="btn btn-neutral float-left" title="ROSACE at a glance" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="GetStarted.html" class="btn btn-neutral float-right" title="Get started" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

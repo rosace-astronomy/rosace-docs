@@ -18,7 +18,7 @@ The project is based on Open Source software tools only.
 Robotic observation means that **no human action** is required. From opening the dome (or shelter) to processing the data and sharing the result, 
 all is automated. 
 
-The project is developed by the community: any contribution is welcome.
+The project is developed by the community: your contribution is welcome.
 Our intention is to propose a system that can be adapted from smallest to biggest telescopes.
 
 .. To activate if we must have different content for PDF
@@ -29,9 +29,12 @@ Our intention is to propose a system that can be adapted from smallest to bigges
          :caption: Contents:
 
          ./intro.rst
+         ./Why_Robotic_Spectroscopy.rst
+         ./What_does_ROSACE.rst
+         ./ROSACE_at_glance.rst
+         ./Technical_choices.rst
          ./GetStarted.rst
          ./Contribute.rst
-         ./Principles.rst
          ./Modules/Module1.rst
          ./Modules/Module2.rst
          ./Modules/Module3.rst
@@ -48,9 +51,12 @@ Our intention is to propose a system that can be adapted from smallest to bigges
    :caption: Contents:
 
    ./intro.rst
+   ./Why_Robotic_Spectroscopy.rst
+   ./What_does_ROSACE.rst
+   ./ROSACE_at_glance.rst
+   ./Technical_choices.rst
    ./GetStarted.rst
    ./Contribute.rst
-   ./Principles.rst
    ./Modules/Module1.rst
    ./Modules/Module2.rst
    ./Modules/Module3.rst
