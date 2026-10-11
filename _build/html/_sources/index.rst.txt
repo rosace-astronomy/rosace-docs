@@ -8,14 +8,15 @@
 Welcome to the ROSACE project
 =============================
 
-ROSACE is the acronym for **Robotic Observations and Spectrocopic Astronomy, a Collaborative Experience**
+ROSACE is the acronym for **Robotic Observations and Spectroscopic Astronomy, a Collaborative Experience**
 
 The ROSACE project aims to develop a network of amateur and professional observatories to run Robotic Spectroscopic astronomical observations.
 All together, we offer a new tool to the Science to better understand our Universe.
 
-The project is based on Open Source software tools only.
+The project is based on Open Source software tools only. 
+The licence is GPLv3.
 
-Robotic observation means that **no human action** is required. From opening the dome (or shelter) to processing the data and sharing the result, 
+Robotic observation means that **no human action** is required. From starting a session to processing the data and sharing the result, 
 all is automated. 
 
 The project is developed by the community: your contribution is welcome.

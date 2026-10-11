@@ -5,5 +5,5 @@ Each observation is fully defined by its Observing File. This file is in yaml fo
 
 Here is the standard format for the Observing File (very temporary - to be completed):
 
-.. literalinclude:: ObsFileFormat.yaml
-   :language: yaml
+.. .. literalinclude:: ObsFileFormat.yaml
+..   :language: yaml

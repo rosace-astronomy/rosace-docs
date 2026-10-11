@@ -7,7 +7,7 @@ The project is based on few principles:
 
 * An observation is a consistent set of images and data, described in an Observation File (yaml format).
 * All files of one observing night are saved in a single folder.
-* All images and spectra are in FTIS format (which is THE format for astronomy files).
+* All images and spectra are in FITS format (which is THE format for astronomy files).
 * There is a single configuration file (in yaml format) for the whole application.
 * There is also a hardware configuration file for each setup (telescope, mount, spectroscope, cameras...)
 * We apply the TDD (Tests Driven Development) method. Each module or plugin has a series of tests to ensure there is no regression over the time.

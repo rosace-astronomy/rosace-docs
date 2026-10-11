@@ -1,7 +1,7 @@
 The five modules
 ================
 
-The project is made of 5 independant modules:
+The project is made of 5 independent modules:
 
 * Module 1: :ref:`The dome/shelter control <Module1-label>`
 
@@ -12,5 +12,5 @@ Blabla
 * Module 4: :ref:`Data reduction (to get a scientific result) <Module4-label>`
 * Module 5: :ref:`Display and share the results <Module5-label>`
 
-Indepedant modules means that each one can be used independantly from the others. You can even use only some of them, and not all. Of course, the modules must
+Indepedant modules means that each one can be used independently from the others. You can even use only some of them, and not all. Of course, the modules must
 exchange some data, and this is done through Rest API.

@@ -89,7 +89,7 @@
 <span id="ataglance-label"></span><h1>ROSACE at a glance<a class="headerlink" href="#rosace-at-a-glance" title="Permalink to this heading"></a></h1>
 <p>Welcome to the <a class="reference internal" href="index.html#mainpage"><span class="std std-ref">ROSACE project</span></a>.</p>
 <p>The core of the system is an Orchestrator. It manages the observations from initialization of the observatory
-to its closure, and runs the observing and data reduction sequences for each target stars.
+to its closure, and runs the observing and data reduction sequences for each target star.
 The observing sequence is made of plugins, that you can adapt to your own needs. And the same for the data
 reduction sequence.</p>
 <p>Before starting the observing process, you must make sure that the observing conditions (weather) are good
@@ -98,18 +98,18 @@ enough - this is out of the scope of ROSACE.</p>
 <a class="reference internal image-reference" href="_images/Schema_ROSACE.png"><img alt="_images/Schema_ROSACE.png" class="align-center" src="_images/Schema_ROSACE.png" style="width: 600.0px; height: 400.0px;" /></a>
 <p>It has a simple behavior: it starts the session by an INIT step (for instance to connect the hardware and cooling down the cameras).
 Then, it loops for each target the scheduler (to define what is the next target), the sequencer (for data acquisition), the data reduction
-and the sharing (to send the data to the right place, like a database). At the end of the session, it closes it (disconnect the hardware, and so on).</p>
+and the sharing (to send the data to the right place, like a database). At the end of the session, it closes it (disconnecting the hardware, and so on).</p>
 <p>Each step for the sequencer and data reduction is made of plugins that you can adapt to your own needs.</p>
-<p>The list of plugins that must be used for a given observation are descrived in a Program file (.yaml format). This means the each observation
-can have it own sequence (for data acquisiton, for data reduction, and for sharing).The plugins are dynamically loaded.</p>
+<p>The list of plugins that must be used for a given observation are described in a Program file (.yaml format). This means each observation
+can have its own sequence (for data acquisition, for data reduction, and for sharing). The plugins are dynamically loaded.</p>
 <p>The Orchestrator creates an Observation file at the beginning of the observation. This file will go through all the steps (plugins),
 and each plugin will enrich it. At the end of the observation, this Observation file is the memory of the observation.
 All necessary data are recorded there: date, target, scientific program, raw images, data processing steps, and at the end the processed spectrum.</p>
-<p>This Observation file is the only information that is known by each plugin. This makes all plugins independant from each other - and this is why it is easy to make or adapt your own plugins.</p>
+<p>This Observation file is the only information that is known by each plugin. This makes all plugins independent from each other - and this is why it is easy to make or adapt your own plugins.</p>
 <p>You’ll find more details of each step in the following pages:</p>
 <ul class="simple">
 <li><p>Step 1: <a class="reference internal" href="Modules/Module1.html#module1-label"><span class="std std-ref">initialization (once at the beginning of the session)</span></a></p></li>
-<li><p>Step 2: <a class="reference internal" href="Modules/Module2.html#module2-label"><span class="std std-ref">Shelduler (what is the next target to observe)</span></a></p></li>
+<li><p>Step 2: <a class="reference internal" href="Modules/Module2.html#module2-label"><span class="std std-ref">Scheduler (what is the next target to observe)</span></a></p></li>
 <li><p>Step 3: <a class="reference internal" href="Modules/Module3.html#module3-label"><span class="std std-ref">Sequencer (run the actual observation)</span></a></p></li>
 <li><p>Step 4: <a class="reference internal" href="Modules/Module4.html#module4-label"><span class="std std-ref">Data reduction (to get a scientific result)</span></a></p></li>
 <li><p>Step 5: <a class="reference internal" href="Modules/Module5.html#module5-label"><span class="std std-ref">Display, validate and share the results</span></a></p></li>

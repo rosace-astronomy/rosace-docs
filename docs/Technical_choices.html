@@ -92,16 +92,16 @@
 <ul class="simple">
 <li><p>An observation is a consistent set of images and data, described in an Observation File (yaml format).</p></li>
 <li><p>All files of one observing night are saved in a single folder.</p></li>
-<li><p>All images and spectra are in FTIS format (which is THE format for astronomy files).</p></li>
+<li><p>All images and spectra are in FITS format (which is THE format for astronomy files).</p></li>
 <li><p>There is a single configuration file (in yaml format) for the whole application.</p></li>
 <li><p>There is also a hardware configuration file for each setup (telescope, mount, spectroscope, cameras…)</p></li>
-<li><p>We apply the TDD (Tests Driven Development) method. Each module or plugin has a series of tests to ensure there is no regression over the time.</p></li>
+<li><p>We apply the TDD (Test-Driven Development) method. Each module or plugin has a series of tests to ensure there is no regression over the time.</p></li>
 <li><p>We propose a User Interface (UI) for the orchestrator, but the system can be used with no UI (which is the common way).</p></li>
-<li><p>All targets stars to be observed are stored in a local database (SQLite), to be able to observe even without internet connexion.</p></li>
+<li><p>All targets stars to be observed are stored in a local database (SQLite), to be able to observe even without internet connection.</p></li>
 <li><p>We use only Open Source tools:</p>
 <ul>
 <li><p>Linux <a class="footnote-reference brackets" href="#f1" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p></li>
-<li><p>Python (3.10 or above) as much as possible.</p></li>
+<li><p>Python (3.12 or above) as much as possible.</p></li>
 <li><p>Git for revision control.</p></li>
 <li><p>Github repo to share the code.</p></li>
 <li><p>Rest API interfaces (to split front-end and back-end).</p></li>
@@ -114,25 +114,30 @@
 <li><p>FastAPI for the Rest API interfaces.</p></li>
 <li><p>SQLite database for targets and observations records.</p></li>
 <li><p>Logging for the loggers (all actions are recorded).</p></li>
+<li><p>Numpy</p></li>
+<li><p>Scipy</p></li>
+<li><p>Matplotlib</p></li>
+<li><p>Photutils</p></li>
+<li><p>Astrometry.net</p></li>
+<li><p>PHD2</p></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>The dome or shelter can open and close whatever is the telescope position <a class="footnote-reference brackets" href="#f2" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>.</p></li>
-<li><p>Each module can be installed locally or remotely (client-server architecture).</p></li>
 <li><p>We can use Kstars for monitoring the actions (very useful for debugging).</p></li>
-<li><p>We love the concept of continuous improvement ; a small step every day.</p></li>
+<li><p>We love the concept of continuous improvement; a small step every day.</p></li>
+<li><p>We’ve setup an authentification system (login &amp; password) to prevent any security issue.</p></li>
 </ul>
 <p class="rubric">Footnotes</p>
 <aside class="footnote-list brackets">
 <aside class="footnote brackets" id="f1" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
 <p>We know that most of people are using Windows. The door is not closed. Since we use Python
-(which is not platform dependant) and ASCOM (under Windows) platform offers the same kind of feature than INDI (under Linux),
-this can probably be adapted in close future - despite Windows is not Open Source.</p>
+(which is not platform dependent) and the ASCOM (under Windows) platform offers the same kind of features as INDI (under Linux),
+this can probably be adapted in the near future - even though Windows is not Open Source.</p>
 </aside>
 <aside class="footnote brackets" id="f2" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
 <p>This is a simple and efficient way to split functions and protect the instrument. But we keep in mind that this condition is not made by lots of observatories
 (most of the rolling shelter ones), and there is no strong stopper to this.</p>
 </aside>

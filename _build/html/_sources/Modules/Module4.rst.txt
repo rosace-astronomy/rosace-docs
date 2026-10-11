@@ -12,7 +12,7 @@ This is the job of this Step 4.
 
 Of course, the data reduction process depends on each scientific program. 
 
-In a first time, we do this reduction step thanks to SpecINTI software. Then, we'll develop our own process - fully Open Source, in Python.
+We've developed our own process - fully Open Source, in Python.
 
 The data reduction process is a list of reduction operations (like master dark, spectrum extraction or wavelength calibration). ROSACE will 
 propose a list of such operations, but you can write your owns, to adapt to your case.
