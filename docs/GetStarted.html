@@ -459,6 +459,70 @@ cache (Ctrl+Shift+R).</p></li>
 <li><p><strong>–purge-demo refuses to run</strong>: the demo server is still running; stop it
 first.</p></li>
 </ul>
+<div class="admonition note" id="onthefly-label">
+<p class="admonition-title">Note</p>
+<p><strong>What is taken into account without restarting?</strong></p>
+<p>Most changes are taken into account on the fly: ROSACE reads them again
+at the next choice of target or the next observation.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 35.0%" />
+<col style="width: 45.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>What you change</p></th>
+<th class="head"><p>When it is taken into account</p></th>
+<th class="head"><p>Restart?</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>The catalogue (<code class="docutils literal notranslate"><span class="pre">targets.db</span></code>, through the <code class="docutils literal notranslate"><span class="pre">/docs</span></code> page:
+programs, stars, links, exposure times)</p></td>
+<td><p>At the next choice of target: the schedulers read the database
+again each time.</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p>A program file, <code class="docutils literal notranslate"><span class="pre">programs/&lt;name&gt;.yaml</span></code> (acquisition and
+reduction steps)</p></td>
+<td><p>At the next observation: the program is read again at the start
+of each observation.</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p>The <code class="docutils literal notranslate"><span class="pre">scheduler:</span></code> block of a program, or a new program file</p></td>
+<td><p>At the next choice of target: the scheduler reads every program
+again each time. The total of the <code class="docutils literal notranslate"><span class="pre">share_percent</span></code> values is
+only checked when a session starts.</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p>The observation list (the file named by <code class="docutils literal notranslate"><span class="pre">observation_list_path</span></code>)</p></td>
+<td><p>At the next choice of target.</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p>The hardware profile (<code class="docutils literal notranslate"><span class="pre">hardware_*.yaml</span></code>)</p></td>
+<td><p>At the next session (STOP, then START): the devices are connected
+when a session starts.</p></td>
+<td><p>No, but a new session</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">config.yaml</span></code></p></td>
+<td><p>Read once, when the server starts.</p></td>
+<td><p><strong>Yes</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>The Python code (a plugin, a scheduler)</p></td>
+<td><p>Loaded once, when the server starts.</p></td>
+<td><p><strong>Yes</strong></p></td>
+</tr>
+</tbody>
+</table>
+<p>A change never affects the observation in progress: it applies to the
+next one, or to the next choice of target.</p>
+<p>After a restart of the server, there is no need to log in again: the
+login is kept in the database (<code class="docutils literal notranslate"><span class="pre">rosace.db</span></code>), not in memory, and stays
+valid for 14 days. Just reload the page.</p>
+<p>To restart the server: Ctrl+C in its terminal, then <code class="docutils literal notranslate"><span class="pre">rosace</span></code> (or
+<code class="docutils literal notranslate"><span class="pre">rosace</span> <span class="pre">--demo-mode</span></code>) again; in the Docker demo,
+<code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">restart</span> <span class="pre">rosace-demo</span></code>.</p>
+</div>
 </section>
 </section>
 <section id="step-3-run-rosace-with-the-indi-simulators">

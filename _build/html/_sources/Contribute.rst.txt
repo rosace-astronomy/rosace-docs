@@ -297,6 +297,8 @@ observed there (there is no frame of it to replay, and the observation fails
 at pointing). To observe your own stars, move on to the INDI simulators,
 then to your instrument (see :ref:`GetStarted-label`).
 
+Every change above is taken into account without restarting ROSACE: see :ref:`What is taken into account without restarting <OnTheFly-label>`.
+
 Summary
 ~~~~~~~
 

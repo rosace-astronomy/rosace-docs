@@ -367,6 +367,61 @@ If something goes wrong
 * **--purge-demo refuses to run**: the demo server is still running; stop it
   first.
 
+.. _OnTheFly-label:
+
+.. note:: **What is taken into account without restarting?**
+
+   Most changes are taken into account on the fly: ROSACE reads them again
+   at the next choice of target or the next observation.
+
+   .. list-table::
+      :header-rows: 1
+      :widths: 35 45 20
+
+      * - What you change
+        - When it is taken into account
+        - Restart?
+      * - The catalogue (``targets.db``, through the ``/docs`` page:
+          programs, stars, links, exposure times)
+        - At the next choice of target: the schedulers read the database
+          again each time.
+        - No
+      * - A program file, ``programs/<name>.yaml`` (acquisition and
+          reduction steps)
+        - At the next observation: the program is read again at the start
+          of each observation.
+        - No
+      * - The ``scheduler:`` block of a program, or a new program file
+        - At the next choice of target: the scheduler reads every program
+          again each time. The total of the ``share_percent`` values is
+          only checked when a session starts.
+        - No
+      * - The observation list (the file named by ``observation_list_path``)
+        - At the next choice of target.
+        - No
+      * - The hardware profile (``hardware_*.yaml``)
+        - At the next session (STOP, then START): the devices are connected
+          when a session starts.
+        - No, but a new session
+      * - ``config.yaml``
+        - Read once, when the server starts.
+        - **Yes**
+      * - The Python code (a plugin, a scheduler)
+        - Loaded once, when the server starts.
+        - **Yes**
+
+   A change never affects the observation in progress: it applies to the
+   next one, or to the next choice of target.
+
+   After a restart of the server, there is no need to log in again: the
+   login is kept in the database (``rosace.db``), not in memory, and stays
+   valid for 14 days. Just reload the page.
+
+   To restart the server: Ctrl+C in its terminal, then ``rosace`` (or
+   ``rosace --demo-mode``) again; in the Docker demo,
+   ``docker restart rosace-demo``.
+
+
 Step 3: Run ROSACE with the INDI simulators
 -------------------------------------------
 (to be done)
