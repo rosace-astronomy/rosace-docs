@@ -1,24 +1,44 @@
-# Documentation for the Robotic Observatory
+# Documentation of the ROSACE project
 
-June 2025
+Last updated: October 2026
 
-Documentation for the ROSACE project.
-It is based on Sphinx tool.
+The user documentation of ROSACE, built with Sphinx. It is published at
+[https://rosace-astronomy.github.io/rosace-docs/](https://rosace-astronomy.github.io/rosace-docs/).
 
-Documentation is visible here: [https://rosace-astronomy.github.io/rosace-docs/](https://rosace-astronomy.github.io/rosace-docs/).
+The source code of ROSACE itself is on Codeberg:
+[https://codeberg.org/FrancoisCochard/Rosace-manager](https://codeberg.org/FrancoisCochard/Rosace-manager).
 
-PDF file is available in _build/simplepdf folder.
+## Install the tools
 
-To update the changes in html, just run in the ~/docs/ (same as this readme file) directory:
+Once, from this directory (the one holding this file):
+
+```
+python3 -m venv rosace-docs
+source rosace-docs/bin/activate
+pip install -r requirements.txt
+```
+
+Afterwards, only `source rosace-docs/bin/activate` is needed before building.
+
+## Update the HTML documentation
+
+From this directory:
 
 ```
 make html
 cp -r _build/html/* docs/
 ```
 
-Note: the .nojekyll file in docs folder is needed to make the html doc visible on the Github webpage.
+(the `mkh` script does both), then commit and push: GitHub Pages publishes
+the `docs/` folder.
 
-To update the changes in PDF, just run:
+Note: the `.nojekyll` file in `docs/` is needed for GitHub Pages to show the
+documentation.
+
+## Update the PDF version
+
 ```
 make simplepdf
 ```
+
+The PDF is written to `_build/simplepdf/`.

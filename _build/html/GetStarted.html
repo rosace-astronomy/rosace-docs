@@ -49,7 +49,24 @@
 <li class="toctree-l1"><a class="reference internal" href="What_does_ROSACE.html">What does (and what does not) ROSACE software?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ROSACE_at_glance.html">ROSACE at a glance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Technical_choices.html">Technical choices</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Get started</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Get started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#step-1-try-the-docker-demo">Step 1: Try the Docker demo</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#what-it-is">What it is</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#what-you-need">What you need</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#start-the-demo">Start the demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#use-the-demo">Use the demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#look-at-the-files">Look at the files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-the-demo-again">Run the demo again</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#useful-commands">Useful commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#if-something-goes-wrong">If something goes wrong</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#what-the-demo-does-not-show">What the demo does not show</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#step-2-install-rosace-on-your-computer-and-run-the-same-demo">Step 2: Install ROSACE on your computer and run the same demo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-3-run-rosace-with-the-indi-simulators">Step 3: Run ROSACE with the INDI simulators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-4-connect-your-own-instrument">Step 4: Connect your own instrument</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="Contribute.html">How to Contribute</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Modules/Module1.html">Step 1: session initialization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Modules/Module2.html">Step 2: Scheduler</a></li>
@@ -87,17 +104,190 @@
              
   <section id="get-started">
 <span id="getstarted-label"></span><h1>Get started<a class="headerlink" href="#get-started" title="Permalink to this heading"></a></h1>
-<p>(this part is to be completed when the project will have enough maturity).</p>
-<p>We propose here a step by step path to start with ROSACE.</p>
-<p>1. The first step is to use a Docker container, with a demo version of ROSACE. It will allow you to test the system in
-a basic way, and quickly understand the main features: start and stop a session, define targets to observe, look at
-the simulated images and the observations file, check the log, change the configuration files, and so on.</p>
-<p>2. The next step is to install the application on your computer to test it in real conditions. We recommend to start
-with the INDI simulator devices (camera, mount). This can be managed by Kstars software. You must install a few other
-applications for a working setup (Kstars, PHD2 guiding)… You’ll be able to work with ROSACE in close to real conditions.</p>
-<p>3. The final step is to connect your own instruments to the applications. You’ll probably have to adapt few plugins,
-and configuration files - this will allow you to start running real observations!</p>
-<p>… to be completed (Aug. 2026)</p>
+<p>We propose a step-by-step path to start with ROSACE. Each step asks a little
+more of your computer, and brings you closer to a real observatory:</p>
+<ol class="arabic simple">
+<li><p><strong>Try the Docker demo</strong> — nothing to install but Docker. Described in full
+below.</p></li>
+<li><p><strong>Install ROSACE on your computer and run the same demo</strong> — the real
+application, still without any hardware (<code class="docutils literal notranslate"><span class="pre">rosace</span> <span class="pre">--demo-mode</span></code>).</p></li>
+<li><p><strong>Run ROSACE with the INDI simulators</strong> — a simulated camera and mount
+(driven by KStars/Ekos) and PHD2 guiding: ROSACE in close to real
+conditions.</p></li>
+<li><p><strong>Connect your own instrument</strong> — adapt the hardware profile, the
+configuration and, if needed, a few plugins, and start real observations.</p></li>
+</ol>
+<p>Steps 2 to 4 will be documented here soon.</p>
+<p>The source code of ROSACE, and the Docker image, are on Codeberg:
+<a class="reference external" href="https://codeberg.org/FrancoisCochard/Rosace-manager">https://codeberg.org/FrancoisCochard/Rosace-manager</a></p>
+<section id="step-1-try-the-docker-demo">
+<h2>Step 1: Try the Docker demo<a class="headerlink" href="#step-1-try-the-docker-demo" title="Permalink to this heading"></a></h2>
+<section id="what-it-is">
+<h3>What it is<a class="headerlink" href="#what-it-is" title="Permalink to this heading"></a></h3>
+<p>The demo runs the <strong>real</strong> ROSACE process — target selection, pointing and
+plate solving, PHD2 guiding, science and calibration exposures, then the whole
+reduction down to the final spectrum and its summary PDF — on <strong>replayed
+hardware</strong>: instead of driving a telescope, the devices hand back the frames
+recorded during a real night (4 observations of 2026-10-14: psi Per, eps Cas,
+M 57 and eta Ori), and a fake PHD2 replays that night’s guiding. Each exposure
+only lasts a few seconds on screen.</p>
+<p>The demo data are anonymized: the observer is <code class="docutils literal notranslate"><span class="pre">rosace</span></code>, the site
+<code class="docutils literal notranslate"><span class="pre">Rosace-Demo</span></code>, its position rounded to the degree.</p>
+</section>
+<section id="what-you-need">
+<h3>What you need<a class="headerlink" href="#what-you-need" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Docker</strong>: on Linux, your distribution’s <code class="docutils literal notranslate"><span class="pre">docker</span></code> package (add your user
+to the <code class="docutils literal notranslate"><span class="pre">docker</span></code> group, or prefix the commands with <code class="docutils literal notranslate"><span class="pre">sudo</span></code>); on Windows
+or macOS, <a class="reference external" href="https://www.docker.com/products/docker-desktop/">Docker Desktop</a>,
+started before you type the commands below.</p></li>
+<li><p>About <strong>350 MB</strong> to download and <strong>1.1 GB</strong> of disk space.</p></li>
+<li><p>An internet connection (download, then for the demo itself: the validation
+page looks up earlier spectra in the BeSS database).</p></li>
+<li><p>The image is built for <strong>amd64</strong> (Intel/AMD) processors. An Apple Silicon
+Mac (M1, M2…) runs it through emulation, more slowly.</p></li>
+</ul>
+</section>
+<section id="start-the-demo">
+<h3>Start the demo<a class="headerlink" href="#start-the-demo" title="Permalink to this heading"></a></h3>
+<p>Type, in a terminal (Linux, macOS) or PowerShell (Windows), on one line:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>-p<span class="w"> </span><span class="m">8001</span>:8000<span class="w"> </span>-v<span class="w"> </span>rosace-demo-data:/root/.rosace-demo<span class="w"> </span>--name<span class="w"> </span>rosace-demo<span class="w"> </span>codeberg.org/francoiscochard/rosace-demo
+</pre></div>
+</div>
+<p>Docker downloads the image the first time (a few minutes), then starts it in
+the background. What the options mean:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-p</span> <span class="pre">8001:8000</span></code>: ROSACE answers on port 8000 inside the container, reached
+at port <strong>8001</strong> of your computer. If 8001 is already used, choose another
+number on the left (e.g. <code class="docutils literal notranslate"><span class="pre">-p</span> <span class="pre">8080:8000</span></code>) and use it in the address below.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-v</span> <span class="pre">rosace-demo-data:/root/.rosace-demo</span></code>: a Docker <em>volume</em> that keeps
+the demo’s databases, observations and log when the container is removed.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--name</span> <span class="pre">rosace-demo</span></code>: the name used by every command below.</p></li>
+</ul>
+<p>Without a version number, Docker takes the latest published version
+(<code class="docutils literal notranslate"><span class="pre">latest</span></code>). A given version is asked for by its number, e.g.
+<code class="docutils literal notranslate"><span class="pre">codeberg.org/francoiscochard/rosace-demo:0.1.0.0</span></code>.</p>
+</section>
+<section id="use-the-demo">
+<h3>Use the demo<a class="headerlink" href="#use-the-demo" title="Permalink to this heading"></a></h3>
+<ol class="arabic">
+<li><p>Open <a class="reference external" href="http://localhost:8001">http://localhost:8001</a> in your browser. The page shows an orange
+<strong>DEMO MODE</strong> badge.</p></li>
+<li><p>Log in with user <code class="docutils literal notranslate"><span class="pre">rosace</span></code>, password <code class="docutils literal notranslate"><span class="pre">rosace</span></code>. These are fixed demo
+credentials: <strong>never make this port reachable from the Internet</strong>.</p></li>
+<li><p>Click <strong>START</strong>. The session starts (connection to the replayed devices,
+camera cooldown), then the scheduler offers the recorded stars one after
+the other, about a minute and a half each.</p></li>
+<li><p>Watch the session:</p>
+<ul class="simple">
+<li><p>the <strong>observations list</strong> shows each observation’s stages, and the steps
+of its acquisition and reduction while they run;</p></li>
+<li><p>the <strong>Journal</strong> shows the log as it is written;</p></li>
+<li><p><strong>Guidage</strong> shows the guide images (pointing, slit measurement), with
+what was measured drawn over them;</p></li>
+<li><p><strong>Spectre 2D</strong> shows each frame taken by the science camera (target,
+darks, bias, flats, calibration lamp);</p></li>
+<li><p><strong>Spectre 1D</strong> shows the final spectrum, once its reduction is over.</p></li>
+</ul>
+<p>The reduction of an observation runs while the next one is being acquired:
+the four reductions are over about 6 minutes after the start.</p>
+</li>
+<li><p>Open <a class="reference external" href="http://localhost:8001/be/">http://localhost:8001/be/</a> : the <strong>Be stars validation page</strong>, where
+the observer checks each Be spectrum before sending it to the BeSS
+database (spectrum, guiding, sky images, earlier spectra of the same star).</p></li>
+<li><p>Click <strong>STOP</strong> whenever you want: the current observation finishes, then
+the session closes.</p></li>
+</ol>
+<p>The image viewers share the same mouse gestures: left drag selects a zone,
+right drag moves the image, wheel zooms, right click opens a menu, the
+<strong>Aide</strong> button lists them all.</p>
+</section>
+<section id="look-at-the-files">
+<h3>Look at the files<a class="headerlink" href="#look-at-the-files" title="Permalink to this heading"></a></h3>
+<p>Everything the demo produces is in the volume, under <code class="docutils literal notranslate"><span class="pre">/root/.rosace-demo</span></code>
+inside the container: <code class="docutils literal notranslate"><span class="pre">observations/</span></code> (one directory per night, holding the
+observation files, the raw frames, the final spectra and their summary PDFs),
+<code class="docutils literal notranslate"><span class="pre">log/rosace.log</span></code>, <code class="docutils literal notranslate"><span class="pre">databases/</span></code>. To copy the observations to your current
+directory:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>cp<span class="w"> </span>rosace-demo:/root/.rosace-demo/observations<span class="w"> </span>./rosace-demo-observations
+</pre></div>
+</div>
+</section>
+<section id="run-the-demo-again">
+<h3>Run the demo again<a class="headerlink" href="#run-the-demo-again" title="Permalink to this heading"></a></h3>
+<p>The scheduler observes each star once per astronomical day (local noon to
+noon): a second START the same day finds nothing to observe and waits. To
+start a fresh demo, erase its data (the replay dataset is kept), then restart
+the container:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>rosace-demo<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>rosace.main<span class="w"> </span>--purge-demo<span class="w"> </span>--apply
+docker<span class="w"> </span>restart<span class="w"> </span>rosace-demo
+</pre></div>
+</div>
+</section>
+<section id="useful-commands">
+<h3>Useful commands<a class="headerlink" href="#useful-commands" title="Permalink to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Action</p></th>
+<th class="head"><p>Command</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Follow the log</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">logs</span> <span class="pre">-f</span> <span class="pre">rosace-demo</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Stop / start again</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">stop</span> <span class="pre">rosace-demo</span></code> / <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">start</span> <span class="pre">rosace-demo</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Get a newer version</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">pull</span> <span class="pre">codeberg.org/francoiscochard/rosace-demo</span></code>, then
+<code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">rm</span> <span class="pre">-f</span> <span class="pre">rosace-demo</span></code> and the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code> command above
+(the volume keeps the demo’s data)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Remove the container (keeps the volume)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">rm</span> <span class="pre">-f</span> <span class="pre">rosace-demo</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Remove everything</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">rm</span> <span class="pre">-f</span> <span class="pre">rosace-demo</span></code>, <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">volume</span> <span class="pre">rm</span> <span class="pre">rosace-demo-data</span></code>,
+<code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">rmi</span> <span class="pre">codeberg.org/francoiscochard/rosace-demo</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="if-something-goes-wrong">
+<h3>If something goes wrong<a class="headerlink" href="#if-something-goes-wrong" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>The page does not open</strong>: check the container runs (<code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">ps</span></code>), and
+read its log (<code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">logs</span> <span class="pre">rosace-demo</span></code>). The server needs a few seconds
+to start.</p></li>
+<li><p><strong>“port is already allocated”</strong>: another program uses port 8001. Remove the
+container (<code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">rm</span> <span class="pre">-f</span> <span class="pre">rosace-demo</span></code>) and run it again with another port.</p></li>
+<li><p><strong>“Conflict. The container name “/rosace-demo” is already in use”</strong>: the
+container already exists. Start it with <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">start</span> <span class="pre">rosace-demo</span></code>, or
+remove it first (<code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">rm</span> <span class="pre">-f</span> <span class="pre">rosace-demo</span></code>).</p></li>
+<li><p><strong>Nothing is observed after START</strong>: the stars were already observed today
+— see “Run the demo again”.</p></li>
+</ul>
+</section>
+<section id="what-the-demo-does-not-show">
+<h3>What the demo does not show<a class="headerlink" href="#what-the-demo-does-not-show" title="Permalink to this heading"></a></h3>
+<p>The demo replays a fixed night: you cannot add your own targets with real
+observations, and the sky, the Sun and the hour do not matter. Configuration
+changes, your own instrument and real observations come with steps 2 to 4.</p>
+</section>
+</section>
+<section id="step-2-install-rosace-on-your-computer-and-run-the-same-demo">
+<h2>Step 2: Install ROSACE on your computer and run the same demo<a class="headerlink" href="#step-2-install-rosace-on-your-computer-and-run-the-same-demo" title="Permalink to this heading"></a></h2>
+<p>(to be done)</p>
+</section>
+<section id="step-3-run-rosace-with-the-indi-simulators">
+<h2>Step 3: Run ROSACE with the INDI simulators<a class="headerlink" href="#step-3-run-rosace-with-the-indi-simulators" title="Permalink to this heading"></a></h2>
+<p>(to be done)</p>
+</section>
+<section id="step-4-connect-your-own-instrument">
+<h2>Step 4: Connect your own instrument<a class="headerlink" href="#step-4-connect-your-own-instrument" title="Permalink to this heading"></a></h2>
+<p>(to be done)</p>
+</section>
 </section>
 
 
