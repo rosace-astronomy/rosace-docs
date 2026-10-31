@@ -182,7 +182,190 @@ demo: see :ref:`CreateProgram-label`.
 
 Step 2: Install ROSACE on your computer and run the same demo
 -------------------------------------------------------------
-(to be done)
+
+What it is
+^^^^^^^^^^
+
+The same demo as step 1, but ROSACE now runs directly on your computer,
+from its source code: no Docker any more. This is the installation you will
+keep for the next steps (simulators, then your own instrument), and the one
+to use if you want to read or change the code.
+
+The demo data stay apart from any real installation: everything the demo
+writes goes to ``~/.rosace-demo``.
+
+What you need
+^^^^^^^^^^^^^
+
+* **Linux** (ROSACE is developed on Ubuntu; any recent distribution should
+  do).
+* **git**, and **Python 3.11 or newer** with its ``venv`` module (Ubuntu
+  24.04 and Debian 13 have recent enough versions; Ubuntu 22.04's 3.10 is
+  too old).
+* **astrometry.net** (the ``solve-field`` program): the demo plate-solves
+  the recorded guide images for real.
+* About **125 MB** to download for the demo data, and 1 GB of disk space.
+
+On Debian or Ubuntu:
+
+.. code-block:: bash
+
+   sudo apt install git python3-venv astrometry.net
+
+Get the code
+^^^^^^^^^^^^
+
+Anywhere you like, for example in your home directory:
+
+.. code-block:: bash
+
+   git clone https://codeberg.org/FrancoisCochard/Rosace-manager.git
+   cd Rosace-manager
+
+The web interface comes already built: nothing else to compile.
+
+Create a Python environment
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+ROSACE is installed in its own Python *virtual environment*, so that its
+libraries never interfere with the rest of your system. The environment can
+be anywhere: inside the repository, or with your other environments (for
+example ``~/.venvs/rosace``). From the repository's root:
+
+.. code-block:: bash
+
+   python3 -m venv ~/.venvs/rosace
+   source ~/.venvs/rosace/bin/activate
+   pip install -e rosace/
+
+``source .../activate`` *activates* the environment: in this terminal,
+``python`` and ``rosace`` are now those of the environment. In a new
+terminal, activate it again (or see `Use rosace from any terminal`_ below).
+Check: ``rosace --version`` prints the version.
+
+Get the demo data
+^^^^^^^^^^^^^^^^^
+
+The demo replays the frames of a real night: download them (about 120 MB),
+check the download, and put them in ``~/.rosace-demo/replay``:
+
+.. code-block:: bash
+
+   curl -LO https://codeberg.org/FrancoisCochard/Rosace-manager/releases/download/demo-data-2026-10-14/rosace-demo-data-2026-10-14.tar
+   sha256sum rosace-demo-data-2026-10-14.tar
+   mkdir -p ~/.rosace-demo
+   tar -xf rosace-demo-data-2026-10-14.tar -C ~/.rosace-demo
+   mv ~/.rosace-demo/replay_data ~/.rosace-demo/replay
+
+The checksum printed by ``sha256sum`` must read
+``623405982b7c9653676ee0f9c2e296ec472cc10f9dc654b1e63f4ba344801501``. The
+``.tar`` file can be deleted afterwards.
+
+Tell astrometry.net where the index files are
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To plate-solve an image, ``solve-field`` needs *index files* covering that
+part of the sky. The demo data hold the few the demo needs, in
+``~/.rosace-demo/replay/astrometry``. Add this folder to astrometry.net's
+configuration (once):
+
+.. code-block:: bash
+
+   echo "add_path $HOME/.rosace-demo/replay/astrometry" | sudo tee -a /etc/astrometry.cfg
+
+(``$HOME`` is replaced by your home directory: the configuration needs the
+full path.)
+
+Start the demo
+^^^^^^^^^^^^^^
+
+With the environment active:
+
+.. code-block:: bash
+
+   rosace --demo-mode
+
+The server runs in this terminal and shows its log; **Ctrl+C** stops it.
+Then open http://localhost:8000 and use the demo exactly as in step 1
+(`Use the demo`_): log in with ``rosace`` / ``rosace`` (the demo account is
+created automatically), click **START**. If port 8000 is already used, add
+``--port 8001`` and open http://localhost:8001.
+
+Everything the demo produces is in ``~/.rosace-demo``: ``observations/``,
+``log/rosace.log``, ``databases/``.
+
+Run the demo again
+^^^^^^^^^^^^^^^^^^
+
+As in step 1, each star is observed once per astronomical day. To start a
+fresh demo, stop the server (Ctrl+C), erase the demo's data (the demo data
+downloaded above are kept), and start it again:
+
+.. code-block:: bash
+
+   rosace --purge-demo --apply
+   rosace --demo-mode
+
+Without ``--apply``, ``--purge-demo`` only lists what it would erase.
+
+Use rosace from any terminal
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Optional, done once, **with the environment active**:
+
+.. code-block:: bash
+
+   ln -s "$(command -v rosace)" ~/.local/bin/rosace
+   echo "eval \"\$($VIRTUAL_ENV/bin/register-python-argcomplete rosace)\"" >> ~/.bashrc
+
+The first line puts a link to the command in ``~/.local/bin``: ``rosace``
+then works in any terminal, without activating the environment (it knows
+which Python to use). The second line turns on **Tab completion** of its
+options in every new terminal (``$VIRTUAL_ENV``, set by the activation, is
+replaced by your environment's full path).
+
+Check, in a new terminal: ``rosace --version`` prints the version, and
+``rosace --pu`` followed by Tab offers ``--purge-simulated``,
+``--purge-failed`` and ``--purge-demo``. Activating the environment is then
+only needed to work on the code.
+
+Useful commands
+^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+
+   * - Action
+     - Command
+   * - Start the demo
+     - ``rosace --demo-mode`` (``--port 8001`` to change the port)
+   * - Stop it
+     - Ctrl+C in its terminal
+   * - List every option
+     - ``rosace --help``
+   * - Fresh demo (server stopped)
+     - ``rosace --purge-demo --apply``
+   * - Get a newer version
+     - ``git pull`` in the repository, then ``pip install -e rosace/`` with
+       the environment active, and reload the page in your browser
+       (Ctrl+Shift+R)
+
+If something goes wrong
+^^^^^^^^^^^^^^^^^^^^^^^
+
+* **rosace: command not found**: the environment is not active in this
+  terminal (``source ~/.venvs/rosace/bin/activate``), or, for the link of
+  `Use rosace from any terminal`_, ``~/.local/bin`` is not yet in your
+  ``PATH``: log out and in again.
+* **"Replay dataset not found" in the log, nothing observed**: the demo data
+  are not in ``~/.rosace-demo/replay`` — see `Get the demo data`_.
+* **Every observation fails at pointing ("plate solve" in the log)**:
+  ``solve-field`` is not installed, or does not find the index files — see
+  `Tell astrometry.net where the index files are`_.
+* **The page looks old or broken after an update**: reload it bypassing the
+  cache (Ctrl+Shift+R).
+* **--purge-demo refuses to run**: the demo server is still running; stop it
+  first.
 
 Step 3: Run ROSACE with the INDI simulators
 -------------------------------------------

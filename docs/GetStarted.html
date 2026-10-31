@@ -62,7 +62,20 @@
 <li class="toctree-l3"><a class="reference internal" href="#what-the-demo-does-not-show">What the demo does not show</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#step-2-install-rosace-on-your-computer-and-run-the-same-demo">Step 2: Install ROSACE on your computer and run the same demo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-2-install-rosace-on-your-computer-and-run-the-same-demo">Step 2: Install ROSACE on your computer and run the same demo</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">What it is</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">What you need</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-the-code">Get the code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-a-python-environment">Create a Python environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-the-demo-data">Get the demo data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tell-astrometry-net-where-the-index-files-are">Tell astrometry.net where the index files are</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Start the demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Run the demo again</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#use-rosace-from-any-terminal">Use rosace from any terminal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Useful commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">If something goes wrong</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#step-3-run-rosace-with-the-indi-simulators">Step 3: Run ROSACE with the INDI simulators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#step-4-connect-your-own-instrument">Step 4: Connect your own instrument</a></li>
 </ul>
@@ -280,7 +293,173 @@ demo: see <a class="reference internal" href="Contribute.html#createprogram-labe
 </section>
 <section id="step-2-install-rosace-on-your-computer-and-run-the-same-demo">
 <h2>Step 2: Install ROSACE on your computer and run the same demo<a class="headerlink" href="#step-2-install-rosace-on-your-computer-and-run-the-same-demo" title="Permalink to this heading"></a></h2>
-<p>(to be done)</p>
+<section id="id1">
+<h3>What it is<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
+<p>The same demo as step 1, but ROSACE now runs directly on your computer,
+from its source code: no Docker any more. This is the installation you will
+keep for the next steps (simulators, then your own instrument), and the one
+to use if you want to read or change the code.</p>
+<p>The demo data stay apart from any real installation: everything the demo
+writes goes to <code class="docutils literal notranslate"><span class="pre">~/.rosace-demo</span></code>.</p>
+</section>
+<section id="id2">
+<h3>What you need<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Linux</strong> (ROSACE is developed on Ubuntu; any recent distribution should
+do).</p></li>
+<li><p><strong>git</strong>, and <strong>Python 3.11 or newer</strong> with its <code class="docutils literal notranslate"><span class="pre">venv</span></code> module (Ubuntu
+24.04 and Debian 13 have recent enough versions; Ubuntu 22.04’s 3.10 is
+too old).</p></li>
+<li><p><strong>astrometry.net</strong> (the <code class="docutils literal notranslate"><span class="pre">solve-field</span></code> program): the demo plate-solves
+the recorded guide images for real.</p></li>
+<li><p>About <strong>125 MB</strong> to download for the demo data, and 1 GB of disk space.</p></li>
+</ul>
+<p>On Debian or Ubuntu:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>git<span class="w"> </span>python3-venv<span class="w"> </span>astrometry.net
+</pre></div>
+</div>
+</section>
+<section id="get-the-code">
+<h3>Get the code<a class="headerlink" href="#get-the-code" title="Permalink to this heading"></a></h3>
+<p>Anywhere you like, for example in your home directory:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://codeberg.org/FrancoisCochard/Rosace-manager.git
+<span class="nb">cd</span><span class="w"> </span>Rosace-manager
+</pre></div>
+</div>
+<p>The web interface comes already built: nothing else to compile.</p>
+</section>
+<section id="create-a-python-environment">
+<h3>Create a Python environment<a class="headerlink" href="#create-a-python-environment" title="Permalink to this heading"></a></h3>
+<p>ROSACE is installed in its own Python <em>virtual environment</em>, so that its
+libraries never interfere with the rest of your system. The environment can
+be anywhere: inside the repository, or with your other environments (for
+example <code class="docutils literal notranslate"><span class="pre">~/.venvs/rosace</span></code>). From the repository’s root:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>~/.venvs/rosace
+<span class="nb">source</span><span class="w"> </span>~/.venvs/rosace/bin/activate
+pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>rosace/
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">.../activate</span></code> <em>activates</em> the environment: in this terminal,
+<code class="docutils literal notranslate"><span class="pre">python</span></code> and <code class="docutils literal notranslate"><span class="pre">rosace</span></code> are now those of the environment. In a new
+terminal, activate it again (or see <a class="reference internal" href="#use-rosace-from-any-terminal">Use rosace from any terminal</a> below).
+Check: <code class="docutils literal notranslate"><span class="pre">rosace</span> <span class="pre">--version</span></code> prints the version.</p>
+</section>
+<section id="get-the-demo-data">
+<h3>Get the demo data<a class="headerlink" href="#get-the-demo-data" title="Permalink to this heading"></a></h3>
+<p>The demo replays the frames of a real night: download them (about 120 MB),
+check the download, and put them in <code class="docutils literal notranslate"><span class="pre">~/.rosace-demo/replay</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-LO<span class="w"> </span>https://codeberg.org/FrancoisCochard/Rosace-manager/releases/download/demo-data-2026-10-14/rosace-demo-data-2026-10-14.tar
+sha256sum<span class="w"> </span>rosace-demo-data-2026-10-14.tar
+mkdir<span class="w"> </span>-p<span class="w"> </span>~/.rosace-demo
+tar<span class="w"> </span>-xf<span class="w"> </span>rosace-demo-data-2026-10-14.tar<span class="w"> </span>-C<span class="w"> </span>~/.rosace-demo
+mv<span class="w"> </span>~/.rosace-demo/replay_data<span class="w"> </span>~/.rosace-demo/replay
+</pre></div>
+</div>
+<p>The checksum printed by <code class="docutils literal notranslate"><span class="pre">sha256sum</span></code> must read
+<code class="docutils literal notranslate"><span class="pre">623405982b7c9653676ee0f9c2e296ec472cc10f9dc654b1e63f4ba344801501</span></code>. The
+<code class="docutils literal notranslate"><span class="pre">.tar</span></code> file can be deleted afterwards.</p>
+</section>
+<section id="tell-astrometry-net-where-the-index-files-are">
+<h3>Tell astrometry.net where the index files are<a class="headerlink" href="#tell-astrometry-net-where-the-index-files-are" title="Permalink to this heading"></a></h3>
+<p>To plate-solve an image, <code class="docutils literal notranslate"><span class="pre">solve-field</span></code> needs <em>index files</em> covering that
+part of the sky. The demo data hold the few the demo needs, in
+<code class="docutils literal notranslate"><span class="pre">~/.rosace-demo/replay/astrometry</span></code>. Add this folder to astrometry.net’s
+configuration (once):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;add_path </span><span class="nv">$HOME</span><span class="s2">/.rosace-demo/replay/astrometry&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>/etc/astrometry.cfg
+</pre></div>
+</div>
+<p>(<code class="docutils literal notranslate"><span class="pre">$HOME</span></code> is replaced by your home directory: the configuration needs the
+full path.)</p>
+</section>
+<section id="id3">
+<h3>Start the demo<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<p>With the environment active:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rosace<span class="w"> </span>--demo-mode
+</pre></div>
+</div>
+<p>The server runs in this terminal and shows its log; <strong>Ctrl+C</strong> stops it.
+Then open <a class="reference external" href="http://localhost:8000">http://localhost:8000</a> and use the demo exactly as in step 1
+(<a class="reference internal" href="#use-the-demo">Use the demo</a>): log in with <code class="docutils literal notranslate"><span class="pre">rosace</span></code> / <code class="docutils literal notranslate"><span class="pre">rosace</span></code> (the demo account is
+created automatically), click <strong>START</strong>. If port 8000 is already used, add
+<code class="docutils literal notranslate"><span class="pre">--port</span> <span class="pre">8001</span></code> and open <a class="reference external" href="http://localhost:8001">http://localhost:8001</a>.</p>
+<p>Everything the demo produces is in <code class="docutils literal notranslate"><span class="pre">~/.rosace-demo</span></code>: <code class="docutils literal notranslate"><span class="pre">observations/</span></code>,
+<code class="docutils literal notranslate"><span class="pre">log/rosace.log</span></code>, <code class="docutils literal notranslate"><span class="pre">databases/</span></code>.</p>
+</section>
+<section id="id4">
+<h3>Run the demo again<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
+<p>As in step 1, each star is observed once per astronomical day. To start a
+fresh demo, stop the server (Ctrl+C), erase the demo’s data (the demo data
+downloaded above are kept), and start it again:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rosace<span class="w"> </span>--purge-demo<span class="w"> </span>--apply
+rosace<span class="w"> </span>--demo-mode
+</pre></div>
+</div>
+<p>Without <code class="docutils literal notranslate"><span class="pre">--apply</span></code>, <code class="docutils literal notranslate"><span class="pre">--purge-demo</span></code> only lists what it would erase.</p>
+</section>
+<section id="use-rosace-from-any-terminal">
+<h3>Use rosace from any terminal<a class="headerlink" href="#use-rosace-from-any-terminal" title="Permalink to this heading"></a></h3>
+<p>Optional, done once, <strong>with the environment active</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ln<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">command</span><span class="w"> </span>-v<span class="w"> </span>rosace<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span>~/.local/bin/rosace
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;eval \&quot;\$(</span><span class="nv">$VIRTUAL_ENV</span><span class="s2">/bin/register-python-argcomplete rosace)\&quot;&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
+</pre></div>
+</div>
+<p>The first line puts a link to the command in <code class="docutils literal notranslate"><span class="pre">~/.local/bin</span></code>: <code class="docutils literal notranslate"><span class="pre">rosace</span></code>
+then works in any terminal, without activating the environment (it knows
+which Python to use). The second line turns on <strong>Tab completion</strong> of its
+options in every new terminal (<code class="docutils literal notranslate"><span class="pre">$VIRTUAL_ENV</span></code>, set by the activation, is
+replaced by your environment’s full path).</p>
+<p>Check, in a new terminal: <code class="docutils literal notranslate"><span class="pre">rosace</span> <span class="pre">--version</span></code> prints the version, and
+<code class="docutils literal notranslate"><span class="pre">rosace</span> <span class="pre">--pu</span></code> followed by Tab offers <code class="docutils literal notranslate"><span class="pre">--purge-simulated</span></code>,
+<code class="docutils literal notranslate"><span class="pre">--purge-failed</span></code> and <code class="docutils literal notranslate"><span class="pre">--purge-demo</span></code>. Activating the environment is then
+only needed to work on the code.</p>
+</section>
+<section id="id5">
+<h3>Useful commands<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Action</p></th>
+<th class="head"><p>Command</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Start the demo</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">rosace</span> <span class="pre">--demo-mode</span></code> (<code class="docutils literal notranslate"><span class="pre">--port</span> <span class="pre">8001</span></code> to change the port)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Stop it</p></td>
+<td><p>Ctrl+C in its terminal</p></td>
+</tr>
+<tr class="row-even"><td><p>List every option</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">rosace</span> <span class="pre">--help</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Fresh demo (server stopped)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">rosace</span> <span class="pre">--purge-demo</span> <span class="pre">--apply</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Get a newer version</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> in the repository, then <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-e</span> <span class="pre">rosace/</span></code> with
+the environment active, and reload the page in your browser
+(Ctrl+Shift+R)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id6">
+<h3>If something goes wrong<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>rosace: command not found</strong>: the environment is not active in this
+terminal (<code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">~/.venvs/rosace/bin/activate</span></code>), or, for the link of
+<a class="reference internal" href="#use-rosace-from-any-terminal">Use rosace from any terminal</a>, <code class="docutils literal notranslate"><span class="pre">~/.local/bin</span></code> is not yet in your
+<code class="docutils literal notranslate"><span class="pre">PATH</span></code>: log out and in again.</p></li>
+<li><p><strong>“Replay dataset not found” in the log, nothing observed</strong>: the demo data
+are not in <code class="docutils literal notranslate"><span class="pre">~/.rosace-demo/replay</span></code> — see <a class="reference internal" href="#get-the-demo-data">Get the demo data</a>.</p></li>
+<li><p><strong>Every observation fails at pointing (“plate solve” in the log)</strong>:
+<code class="docutils literal notranslate"><span class="pre">solve-field</span></code> is not installed, or does not find the index files — see
+<a class="reference internal" href="#tell-astrometry-net-where-the-index-files-are">Tell astrometry.net where the index files are</a>.</p></li>
+<li><p><strong>The page looks old or broken after an update</strong>: reload it bypassing the
+cache (Ctrl+Shift+R).</p></li>
+<li><p><strong>–purge-demo refuses to run</strong>: the demo server is still running; stop it
+first.</p></li>
+</ul>
+</section>
 </section>
 <section id="step-3-run-rosace-with-the-indi-simulators">
 <h2>Step 3: Run ROSACE with the INDI simulators<a class="headerlink" href="#step-3-run-rosace-with-the-indi-simulators" title="Permalink to this heading"></a></h2>
