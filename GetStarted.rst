@@ -16,7 +16,7 @@ more of your computer, and brings you closer to a real observatory:
 4. **Connect your own instrument** — adapt the hardware profile, the
    configuration and, if needed, a few plugins, and start real observations.
 
-Steps 2 to 4 will be documented here soon.
+Steps 3 to 4 will be documented here soon.
 
 The source code of ROSACE, and the Docker image, are on Codeberg:
 https://codeberg.org/FrancoisCochard/Rosace-manager

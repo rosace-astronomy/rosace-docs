@@ -108,8 +108,8 @@
 <span id="contribute-label"></span><h1>Adapt ROSACE to your observatory, and contribute<a class="headerlink" href="#adapt-rosace-to-your-observatory-and-contribute" title="Permalink to this heading"></a></h1>
 <p>Welcome to the <a class="reference internal" href="index.html#mainpage"><span class="std std-ref">ROSACE project</span></a>.</p>
 <p>ROSACE is meant to be adapted: your own targets, your own scientific
-programs, your own instrument. This page first explains how to adapt it to
-your case, then how to help the project. The two often go together: when
+programs, your own instrument. This page first explains how to help the project, then how to adapt it to
+your case. The two often go together: when
 your case needs something ROSACE cannot do yet, the change you make is
 welcome in the project.</p>
 <section id="contribute">
@@ -166,6 +166,23 @@ below). One star may belong to several programs.</p>
 <p>The program name holds only unaccented letters, digits and <code class="docutils literal notranslate"><span class="pre">_</span></code> (no space,
 no dash): <code class="docutils literal notranslate"><span class="pre">My_Be</span></code>, <code class="docutils literal notranslate"><span class="pre">WR_2026</span></code>. It must be the same, capitals included, in
 the file name (<code class="docutils literal notranslate"><span class="pre">My_Be.yaml</span></code>) and in the catalogue (<code class="docutils literal notranslate"><span class="pre">My_Be</span></code>).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>What is a REST API?</strong></p>
+<p>An <em>API</em> (Application Programming Interface) is the list of operations a
+program offers to other programs. ROSACE’s server offers one: its web
+interface uses it for everything it shows and does, and you can use it
+too.</p>
+<p>In a <em>REST</em> API, each operation is a web address combined with a verb:
+<code class="docutils literal notranslate"><span class="pre">GET</span></code> reads, <code class="docutils literal notranslate"><span class="pre">POST</span></code> creates or acts, <code class="docutils literal notranslate"><span class="pre">PUT</span></code> changes, <code class="docutils literal notranslate"><span class="pre">DELETE</span></code>
+removes. For example, <code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/programs</span></code> means “give me the list of
+programs”, and <code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/programs</span></code> “create a program”.</p>
+<p>You need no programming to use it: the <code class="docutils literal notranslate"><span class="pre">/docs</span></code> page, generated
+automatically by ROSACE, lists every operation and lets you try it from
+your browser, with a form to fill in and the answer shown below. The
+same operations can also be called from a script (<code class="docutils literal notranslate"><span class="pre">curl</span></code>, Python…) to
+automate a task.</p>
+</div>
 </section>
 <section id="where-the-catalogue-is-managed">
 <h4>Where the catalogue is managed<a class="headerlink" href="#where-the-catalogue-is-managed" title="Permalink to this heading"></a></h4>

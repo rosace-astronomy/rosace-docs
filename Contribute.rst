@@ -6,8 +6,8 @@ Adapt ROSACE to your observatory, and contribute
 Welcome to the :ref:`ROSACE project <MainPage>`.
 
 ROSACE is meant to be adapted: your own targets, your own scientific
-programs, your own instrument. This page first explains how to adapt it to
-your case, then how to help the project. The two often go together: when
+programs, your own instrument. This page first explains how to help the project, then how to adapt it to
+your case. The two often go together: when
 your case needs something ROSACE cannot do yet, the change you make is
 welcome in the project.
 
@@ -63,6 +63,24 @@ below). One star may belong to several programs.
 The program name holds only unaccented letters, digits and ``_`` (no space,
 no dash): ``My_Be``, ``WR_2026``. It must be the same, capitals included, in
 the file name (``My_Be.yaml``) and in the catalogue (``My_Be``).
+
+.. note:: **What is a REST API?**
+
+   An *API* (Application Programming Interface) is the list of operations a
+   program offers to other programs. ROSACE's server offers one: its web
+   interface uses it for everything it shows and does, and you can use it
+   too.
+
+   In a *REST* API, each operation is a web address combined with a verb:
+   ``GET`` reads, ``POST`` creates or acts, ``PUT`` changes, ``DELETE``
+   removes. For example, ``GET /programs`` means "give me the list of
+   programs", and ``POST /programs`` "create a program".
+
+   You need no programming to use it: the ``/docs`` page, generated
+   automatically by ROSACE, lists every operation and lets you try it from
+   your browser, with a form to fill in and the answer shown below. The
+   same operations can also be called from a script (``curl``, Python…) to
+   automate a task.
 
 Where the catalogue is managed
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
