@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>How to Contribute &mdash; ROSACE  documentation</title>
+  <title>Adapt ROSACE to your observatory, and contribute &mdash; ROSACE  documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
@@ -50,7 +50,26 @@
 <li class="toctree-l1"><a class="reference internal" href="ROSACE_at_glance.html">ROSACE at a glance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Technical_choices.html">Technical choices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GetStarted.html">Get started</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">How to Contribute</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Adapt ROSACE to your observatory, and contribute</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#contribute">Contribute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#adapt-rosace-to-your-case">Adapt ROSACE to your case</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#create-a-program-and-add-stars">Create a program and add stars</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#what-a-program-is">What a program is</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#where-the-catalogue-is-managed">Where the catalogue is managed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-1-write-the-program-file">Step 1 — Write the program file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-2-create-the-program-in-the-catalogue">Step 2 — Create the program in the catalogue</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-3-add-the-stars-to-the-catalogue">Step 3 — Add the stars to the catalogue</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-4-link-the-stars-to-the-program">Step 4 — Link the stars to the program</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-5-have-the-program-observed">Step 5 — Have the program observed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#in-the-docker-demo">In the Docker demo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#your-configuration-your-instrument-your-plugins">Your configuration, your instrument, your plugins</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="Modules/Module1.html">Step 1: session initialization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Modules/Module2.html">Step 2: Scheduler</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Modules/Module3.html">Step 3: Sequencer</a></li>
@@ -75,7 +94,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">How to Contribute</li>
+      <li class="breadcrumb-item active">Adapt ROSACE to your observatory, and contribute</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/Contribute.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -85,16 +104,309 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="how-to-contribute">
-<h1>How to Contribute<a class="headerlink" href="#how-to-contribute" title="Permalink to this heading"></a></h1>
+  <section id="adapt-rosace-to-your-observatory-and-contribute">
+<span id="contribute-label"></span><h1>Adapt ROSACE to your observatory, and contribute<a class="headerlink" href="#adapt-rosace-to-your-observatory-and-contribute" title="Permalink to this heading"></a></h1>
 <p>Welcome to the <a class="reference internal" href="index.html#mainpage"><span class="std std-ref">ROSACE project</span></a>.</p>
-<p>The project is developed by the community, and we need you!</p>
-<p>Here are the ways to help developing this tool:</p>
+<p>ROSACE is meant to be adapted: your own targets, your own scientific
+programs, your own instrument. This page first explains how to adapt it to
+your case, then how to help the project. The two often go together: when
+your case needs something ROSACE cannot do yet, the change you make is
+welcome in the project.</p>
+<section id="contribute">
+<h2>Contribute<a class="headerlink" href="#contribute" title="Permalink to this heading"></a></h2>
+<p>The project is developed by the community, and we need you! Here are the
+ways to help:</p>
 <ul class="simple">
-<li><p>Install your own observatory and give us any user feedback</p></li>
-<li><p>If you’re a developer, contact us and tell us where you can help (there is so much to do!)</p></li>
-<li><p>Write and/or translate the documentation (the plan is to get only an English version, but we never know)</p></li>
+<li><p>Install your own observatory and give us any user feedback.</p></li>
+<li><p>If you’re a developer, contact us and tell us where you can help (there
+is so much to do!). The code is on Codeberg:
+<a class="reference external" href="https://codeberg.org/FrancoisCochard/Rosace-manager">https://codeberg.org/FrancoisCochard/Rosace-manager</a></p></li>
+<li><p>Write and/or translate the documentation (the plan is to get only an
+English version, but we never know).</p></li>
 </ul>
+</section>
+<section id="adapt-rosace-to-your-case">
+<h2>Adapt ROSACE to your case<a class="headerlink" href="#adapt-rosace-to-your-case" title="Permalink to this heading"></a></h2>
+<section id="create-a-program-and-add-stars">
+<span id="createprogram-label"></span><h3>Create a program and add stars<a class="headerlink" href="#create-a-program-and-add-stars" title="Permalink to this heading"></a></h3>
+<section id="what-a-program-is">
+<h4>What a program is<a class="headerlink" href="#what-a-program-is" title="Permalink to this heading"></a></h4>
+<p>An observing program (for example <code class="docutils literal notranslate"><span class="pre">Be_stars</span></code> or <code class="docutils literal notranslate"><span class="pre">PN</span></code>) exists in two
+places, which must carry exactly the same name:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 55.0%" />
+<col style="width: 25.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Where</p></th>
+<th class="head"><p>What it holds</p></th>
+<th class="head"><p>How to change it</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>The program file, <code class="docutils literal notranslate"><span class="pre">programs/&lt;name&gt;.yaml</span></code></p></td>
+<td><p><strong>How</strong> to observe: the list of acquisition steps (pointing, guiding,
+exposures, calibrations…), then of reduction steps, and how the
+result is shared.</p></td>
+<td><p>A text editor</p></td>
+</tr>
+<tr class="row-odd"><td><p>The catalogue, database <code class="docutils literal notranslate"><span class="pre">targets.db</span></code></p></td>
+<td><p><strong>What</strong> to observe: the stars (name, coordinates, magnitude, spectral
+type), the programs, and which stars belong to which program — with,
+when needed, an exposure time of its own for a program/star pair.</p></td>
+<td><p>The ROSACE API page (<code class="docutils literal notranslate"><span class="pre">/docs</span></code>)</p></td>
+</tr>
+</tbody>
+</table>
+<p>A star is observed only if it is in the catalogue, linked to the program,
+and asked for by the scheduler (see <a class="reference internal" href="#step-5-have-the-program-observed">Step 5 — Have the program observed</a>
+below). One star may belong to several programs.</p>
+<p>The program name holds only unaccented letters, digits and <code class="docutils literal notranslate"><span class="pre">_</span></code> (no space,
+no dash): <code class="docutils literal notranslate"><span class="pre">My_Be</span></code>, <code class="docutils literal notranslate"><span class="pre">WR_2026</span></code>. It must be the same, capitals included, in
+the file name (<code class="docutils literal notranslate"><span class="pre">My_Be.yaml</span></code>) and in the catalogue (<code class="docutils literal notranslate"><span class="pre">My_Be</span></code>).</p>
+</section>
+<section id="where-the-catalogue-is-managed">
+<h4>Where the catalogue is managed<a class="headerlink" href="#where-the-catalogue-is-managed" title="Permalink to this heading"></a></h4>
+<p>There is no dedicated screen in the web interface yet. The catalogue is
+managed through the ROSACE API page, a web page generated automatically:</p>
+<ol class="arabic simple">
+<li><p>Log in to the usual interface first, in the same browser
+(<a class="reference external" href="http://localhost:8001">http://localhost:8001</a> for the Docker demo, <a class="reference external" href="http://localhost:8000">http://localhost:8000</a> for a
+local installation).</p></li>
+<li><p>Open the same address followed by <code class="docutils literal notranslate"><span class="pre">/docs</span></code>:
+<a class="reference external" href="http://localhost:8001/docs">http://localhost:8001/docs</a>.</p></li>
+<li><p>Each line is an operation (for example <code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/programs</span></code>). Click it, then
+<strong>Try it out</strong>, fill in the fields, and <strong>Execute</strong>. The answer shows below
+(<em>Response body</em>) with its code: 200 or 201 = done, 404 = not found,
+409 = already exists, 401 = you are not logged in (back to 1).</p></li>
+</ol>
+<p><code class="docutils literal notranslate"><span class="pre">GET</span></code> operations only read: they can be tried without any risk.</p>
+</section>
+<section id="step-1-write-the-program-file">
+<h4>Step 1 — Write the program file<a class="headerlink" href="#step-1-write-the-program-file" title="Permalink to this heading"></a></h4>
+<p>The simplest way is to copy an existing program that already observes the
+way you want, and to change only its header. The files are in the
+<code class="docutils literal notranslate"><span class="pre">programs/</span></code> folder of the ROSACE code:</p>
+<ul class="simple">
+<li><p>local installation: <code class="docutils literal notranslate"><span class="pre">rosace/rosace/programs/</span></code> in the repository;</p></li>
+<li><p>Docker demo: <code class="docutils literal notranslate"><span class="pre">/app/rosace/rosace/programs/</span></code> in the container.</p></li>
+</ul>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># ── Program: my Be stars ─────────────────────────────────</span>
+<span class="nt">program</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">My_Be</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Monitoring</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">few</span><span class="nv"> </span><span class="s">Be</span><span class="nv"> </span><span class="s">stars&quot;</span>
+<span class="nt">sequencer</span><span class="p">:</span><span class="w">              </span><span class="c1"># acquisition, in order</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">slew_72ed</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">slit_xy</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pointing_72ed</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">focus</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">star_spectra_acquisition</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stop_phd2_guiding</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dark_acquisition</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bias_acquisition</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">calib_acquisition</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">flat_acquisition</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">spectro_light_source_to_sky</span>
+<span class="nt">reduction</span><span class="p">:</span><span class="w">              </span><span class="c1"># reduction, in order (may be empty: [])</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">calculate_flux</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export_demetra</span>
+<span class="nt">sharing</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">blank_share</span><span class="w">    </span><span class="c1"># a single value</span>
+</pre></div>
+</div>
+<p>Keep <code class="docutils literal notranslate"><span class="pre">program:</span></code> identical to the file name. <code class="docutils literal notranslate"><span class="pre">rosace</span> <span class="pre">--list-subplugins</span></code>
+lists the possible steps (in the Docker demo:
+<code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">exec</span> <span class="pre">rosace-demo</span> <span class="pre">python</span> <span class="pre">-m</span> <span class="pre">rosace.main</span> <span class="pre">--list-subplugins</span></code>). The
+steps above are those of the instrument ROSACE was developed with (a 72 mm
+refractor and an Alpy 600 spectrograph): for another instrument, start from
+the provided program closest to it.</p>
+<p><strong>In the Docker demo</strong>, copy the file out of the container, edit it, and put
+it back:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>cp<span class="w"> </span>rosace-demo:/app/rosace/rosace/programs/Be_stars.yaml<span class="w"> </span>./My_Be.yaml
+<span class="c1"># edit My_Be.yaml with a text editor</span>
+docker<span class="w"> </span>cp<span class="w"> </span>./My_Be.yaml<span class="w"> </span>rosace-demo:/app/rosace/rosace/programs/
+</pre></div>
+</div>
+<p>The container’s <code class="docutils literal notranslate"><span class="pre">programs/</span></code> folder is not in the data volume: a program
+added this way disappears when the container is removed and created again
+(for example to move to a newer version). Keep your copy.</p>
+</section>
+<section id="step-2-create-the-program-in-the-catalogue">
+<h4>Step 2 — Create the program in the catalogue<a class="headerlink" href="#step-2-create-the-program-in-the-catalogue" title="Permalink to this heading"></a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/programs</span></code>, with this body:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;My_Be&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Monitoring of a few Be stars&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>A name already taken, whatever its capitals, is refused (code 409).
+<code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/programs</span></code> lists every program.</p>
+</section>
+<section id="step-3-add-the-stars-to-the-catalogue">
+<h4>Step 3 — Add the stars to the catalogue<a class="headerlink" href="#step-3-add-the-stars-to-the-catalogue" title="Permalink to this heading"></a></h4>
+<p>Stars are imported from Simbad (the CDS database, Strasbourg): give a name,
+and ROSACE fetches the J2000 coordinates, the V magnitude and the spectral
+type. An Internet connection is needed.</p>
+<p><strong>One star at a time:</strong> <code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/simbad/import</span></code>. Field <code class="docutils literal notranslate"><span class="pre">name</span></code>: any name
+Simbad knows — <code class="docutils literal notranslate"><span class="pre">gam</span> <span class="pre">Cas</span></code>, <code class="docutils literal notranslate"><span class="pre">HD</span> <span class="pre">5394</span></code>, <code class="docutils literal notranslate"><span class="pre">Navi</span></code>… ROSACE records the star
+under its main Simbad name and keeps the name you typed as an alias when it
+differs. Either can then be used everywhere (capitals do not matter). If the
+star is already in the catalogue, even under another name, it is not created
+twice: only the alias is added. To see what Simbad returns without recording
+anything: <code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/simbad/search</span></code>.</p>
+<p><strong>A whole list:</strong> <code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/stars/import-list</span></code>. Prepare a text file, one star
+name per line (empty lines are ignored):</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>gam Cas
+HD 5394
+zet Tau
+48 Lib
+</pre></div>
+</div>
+<p>Choose it with <strong>Choose file</strong>, then <strong>Execute</strong>. The answer gives one line
+per star: <code class="docutils literal notranslate"><span class="pre">created</span></code> (added), <code class="docutils literal notranslate"><span class="pre">existing</span></code> (already there) or <code class="docutils literal notranslate"><span class="pre">error</span></code>
+(Simbad does not know it or does not answer — see <code class="docutils literal notranslate"><span class="pre">detail</span></code>). An error on
+one line does not stop the next ones.</p>
+</section>
+<section id="step-4-link-the-stars-to-the-program">
+<h4>Step 4 — Link the stars to the program<a class="headerlink" href="#step-4-link-the-stars-to-the-program" title="Permalink to this heading"></a></h4>
+<p><strong>One star:</strong> <code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/programs/{name}/stars/{star_name}</span></code>. <code class="docutils literal notranslate"><span class="pre">name</span></code> = the
+program (<code class="docutils literal notranslate"><span class="pre">My_Be</span></code>), <code class="docutils literal notranslate"><span class="pre">star_name</span></code> = the star (main name or alias),
+<code class="docutils literal notranslate"><span class="pre">exposure_time</span></code> = optional, the duration of one exposure in seconds for
+this star in this program. Running the operation again on the same pair
+replaces the exposure time: this is also how to change it.</p>
+<p><strong>Several stars:</strong> <code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/programs/import-list</span></code>. A YAML file, the program
+then the list of its stars (already in the catalogue — no Simbad call here);
+one file may fill several programs:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">My_Be</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gam Cas</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HD 5394</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">zet Tau</span>
+</pre></div>
+</div>
+<p>The answer, per line: <code class="docutils literal notranslate"><span class="pre">linked</span></code>, <code class="docutils literal notranslate"><span class="pre">program_not_found</span></code> or
+<code class="docutils literal notranslate"><span class="pre">star_not_found</span></code>. This operation sets no exposure time; to set one, use
+the previous operation, star by star.</p>
+<p><strong>The exposure time:</strong></p>
+<ul class="simple">
+<li><p>Without <code class="docutils literal notranslate"><span class="pre">exposure_time</span></code>, ROSACE computes it from the V magnitude
+(configuration parameters <code class="docutils literal notranslate"><span class="pre">exposure_time_mag0_seconds</span></code>,
+<code class="docutils literal notranslate"><span class="pre">max_exposure_time_seconds</span></code> and <code class="docutils literal notranslate"><span class="pre">min_exposure_count</span></code>). This is the
+normal case.</p></li>
+<li><p>With it, the given value replaces this computation — keep it for the stars
+where the computation does not suit (a star that saturates, for example).</p></li>
+<li><p>An exposure longer than <code class="docutils literal notranslate"><span class="pre">max_exposure_time_seconds</span></code> is split into
+several exposures; there are always at least <code class="docutils literal notranslate"><span class="pre">min_exposure_count</span></code>.</p></li>
+<li><p>A star with no V magnitude in Simbad and no <code class="docutils literal notranslate"><span class="pre">exposure_time</span></code> cannot be
+observed: the observation fails. Give it an exposure time.</p></li>
+</ul>
+<p><strong>Check:</strong> <code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/programs/{name}/stars</span></code> lists the program’s stars with
+their exposure time (<code class="docutils literal notranslate"><span class="pre">null</span></code> = computed from the magnitude). To remove a
+star from the program: <code class="docutils literal notranslate"><span class="pre">DELETE</span> <span class="pre">/programs/{name}/stars/{star_name}</span></code> (the
+star stays in the catalogue).</p>
+</section>
+<section id="step-5-have-the-program-observed">
+<h4>Step 5 — Have the program observed<a class="headerlink" href="#step-5-have-the-program-observed" title="Permalink to this heading"></a></h4>
+<p>The active scheduler (configuration key <code class="docutils literal notranslate"><span class="pre">active_scheduler</span></code>) decides which
+stars to observe, and in which order.</p>
+<p><strong>Scheduler</strong> <code class="docutils literal notranslate"><span class="pre">scheduler_rosace_2026</span></code> <strong>(the demo’s).</strong> It follows the
+observation list, a text file whose path is given by
+<code class="docutils literal notranslate"><span class="pre">observation_list_path</span></code> in the configuration
+(<code class="docutils literal notranslate"><span class="pre">/root/.rosace-demo/targets/ObservationList.txt</span></code> in the Docker demo). A
+header line, then one line per requested observation:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Priority, Program, Star, comment
+1, My_Be, gam Cas, first of all
+2, My_Be, HD 5394,
+2, My_Be, zet Tau,
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Priority</span></code>: 1 goes first; at equal priority, the order of the file.</p></li>
+<li><p>Each line asks for one observation per night; to observe the same star
+twice, write two lines.</p></li>
+<li><p>A star too low (below <code class="docutils literal notranslate"><span class="pre">min_target_altitude_deg</span></code>, or below the local
+horizon) is skipped for now, and offered again later.</p></li>
+<li><p>An invalid line (unknown program or star, star not linked to the program)
+is ignored, with a message in the Journal.</p></li>
+<li><p>The file is read again at each choice of target: it can be changed during
+a session.</p></li>
+</ul>
+<p><strong>Scheduler</strong> <code class="docutils literal notranslate"><span class="pre">selector</span></code> <strong>(several programs).</strong> Each program has its own
+planner, declared by a <code class="docutils literal notranslate"><span class="pre">scheduler:</span></code> block in its file. The simplest one,
+<code class="docutils literal notranslate"><span class="pre">random_pick</span></code>, draws at random a star of the program not yet observed
+tonight:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">scheduler</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">random_pick</span>
+<span class="w">  </span><span class="nt">share_percent</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span><span class="w">          </span><span class="c1"># share of telescope time aimed at (optional)</span>
+<span class="w">  </span><span class="nt">params</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">min_interval_days</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span><span class="w">     </span><span class="c1"># at most one successful observation every 5 days</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">share_percent</span></code> of all programs must not add up to more than 100:
+otherwise the session stops at the first choice of target, with an error in
+the Journal. Observations asked by hand go in the same observation list as
+above (optional extra columns: <code class="docutils literal notranslate"><span class="pre">Start_after</span></code>, <code class="docutils literal notranslate"><span class="pre">End_before</span></code>, <code class="docutils literal notranslate"><span class="pre">Series</span></code>).
+See also <a class="reference internal" href="Modules/Module2.html"><span class="doc">Step 2: Scheduler</span></a>.</p>
+</section>
+<section id="in-the-docker-demo">
+<h4>In the Docker demo<a class="headerlink" href="#in-the-docker-demo" title="Permalink to this heading"></a></h4>
+<p>Every step above works in the demo: you can create a program there, import
+stars from Simbad and link them. But the demo only replays the frames
+recorded during a real night, for its 4 stars: another star cannot be
+observed there (there is no frame of it to replay, and the observation fails
+at pointing). To observe your own stars, move on to the INDI simulators,
+then to your instrument (see <a class="reference internal" href="GetStarted.html#getstarted-label"><span class="std std-ref">Get started</span></a>).</p>
+</section>
+<section id="summary">
+<h4>Summary<a class="headerlink" href="#summary" title="Permalink to this heading"></a></h4>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 5.0%" />
+<col style="width: 55.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>#</p></th>
+<th class="head"><p>Action</p></th>
+<th class="head"><p>Where</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Write <code class="docutils literal notranslate"><span class="pre">programs/My_Be.yaml</span></code> (copy of an existing program)</p></td>
+<td><p>A text editor</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Create the program <code class="docutils literal notranslate"><span class="pre">My_Be</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/programs</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>Import the stars from Simbad</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/simbad/import</span></code> or <code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/stars/import-list</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>Link the stars to the program (exposure time optional)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/programs/{name}/stars/{star_name}</span></code> or
+<code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/programs/import-list</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>Check</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/programs/{name}/stars</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>Ask for the observations</p></td>
+<td><p>Observation list, or <code class="docutils literal notranslate"><span class="pre">scheduler:</span></code> block</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="your-configuration-your-instrument-your-plugins">
+<h3>Your configuration, your instrument, your plugins<a class="headerlink" href="#your-configuration-your-instrument-your-plugins" title="Permalink to this heading"></a></h3>
+<p>To be documented: the configuration file, the hardware profile of your
+instrument, and how to write a plugin of your own.</p>
+</section>
+</section>
 </section>
 
 

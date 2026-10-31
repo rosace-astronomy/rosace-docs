@@ -177,6 +177,9 @@ The demo replays a fixed night: you cannot add your own targets with real
 observations, and the sky, the Sun and the hour do not matter. Configuration
 changes, your own instrument and real observations come with steps 2 to 4.
 
+You can still create your own program and add stars to the catalogue in the
+demo: see :ref:`CreateProgram-label`.
+
 Step 2: Install ROSACE on your computer and run the same demo
 -------------------------------------------------------------
 (to be done)
